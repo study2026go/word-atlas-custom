@@ -4,6 +4,21 @@ import { hashSeed, normalize, shuffle } from "../lib/text";
 import { isMastered, review, Rating, type Grade } from "./srs";
 import { bumpDay, dayKey, store, type ActiveSession, type Progress, type QuizKind, type Settings, type Step } from "./store";
 
+export function topicIndex(atlas: Atlas, key: string) {
+  return atlas.topics.findIndex(([k]) => k === key);
+}
+
+export function topicCounts(atlas: Atlas) {
+  const counts = new Array(atlas.topics.length).fill(0);
+  atlas.words.forEach((w) => counts[w.topic]++);
+  return counts;
+}
+
+export function routeTopicName(atlas: Atlas, settings: Settings) {
+  if (settings.routeMode !== "topic") return null;
+  return atlas.topics[topicIndex(atlas, settings.routeTopic)]?.[1] ?? null;
+}
+
 export function dueIds(p: Progress, now = Date.now()) {
   return Object.entries(p.cards)
     .filter(([, c]) => c.due <= now)
@@ -15,9 +30,25 @@ export function newToday(p: Progress) {
   return p.days[dayKey()]?.n ?? 0;
 }
 
-/** Next unseen words along the learning path, starting at the learner's level. */
+/** Next unseen words along the learning path, starting at the learner's level.
+ *  Step 1 (word-atlas-custom): when routeMode is "topic", new words come only
+ *  from the chosen topic, in atlas order (i.e. from the start of that topic),
+ *  ignoring startLevel. An exhausted topic honestly yields fewer words — it
+ *  never silently falls back to other topics. An unknown topic key falls back
+ *  to level mode. Reviews are untouched: dueIds()/todayPlan() still use FSRS. */
 export function nextNew(atlas: Atlas, p: Progress, settings: Settings, count: number) {
   const out: string[] = [];
+  if (settings.routeMode === "topic") {
+    const ti = topicIndex(atlas, settings.routeTopic);
+    if (ti >= 0) {
+      for (const w of atlas.words) {
+        if (out.length >= count) break;
+        if (w.topic !== ti || p.cards[w.id] || out.includes(w.id)) continue;
+        out.push(w.id);
+      }
+      return out;
+    }
+  }
   const pass = (from: number) => {
     for (const w of atlas.words) {
       if (out.length >= count) return;
@@ -42,8 +73,8 @@ function quizKind(ref: WordRef, p: Progress, s: Settings, salt: number): QuizKin
   const hasImg = !!(ref.media & MEDIA.img);
   const roll = hashSeed(ref.id + salt) % 100;
   if (!c || c.s < 2) {
-    if (hasImg && roll < 45) return "picture";
-    return roll < 80 ? "meaning" : "listen";
+    if (hasImg && roll < 35) return "picture";
+    return roll < 65 ? "meaning" : "listen";
   }
   if (s.spell && (c.s >= 4 || roll < 35)) return roll < 75 ? "spell" : hasImg ? "picture" : "listen";
   return roll < 50 ? "listen" : hasImg ? "picture" : "meaning";
