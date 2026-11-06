@@ -4,7 +4,7 @@ import { prefetch, useAtlas, useEntry } from "../atlas/context";
 import { go, openWord } from "../lib/router";
 import { cue } from "../lib/sound";
 import { hashSeed } from "../lib/text";
-import { buildSession, masteredCount, todayPlan } from "../store/session";
+import { buildSession, masteredCount, routeTopicName, todayPlan } from "../store/session";
 import { isMastered } from "../store/srs";
 import { dayKey, store, useStore } from "../store/store";
 import { Galaxy } from "../galaxy/Galaxy";
@@ -70,6 +70,7 @@ export function Today() {
     return { k, label: "日一二三四五六"[d.getDay()], v: progress.days[k]?.r ?? 0, today: i === 6 };
   });
 
+  const routeTopicNameStr = routeTopicName(atlas, settings);
   const learned = Object.keys(progress.cards).length;
   const mastered = masteredCount(progress);
   const teaser = (active ? active.newIds : plan.fresh).slice(0, 5).map((id) => atlas.byId.get(id)!).filter(Boolean);
@@ -126,6 +127,14 @@ export function Today() {
               ))}
               <span>今天会遇见它们</span>
             </div>
+          )}
+          {settings.routeMode === "topic" && routeTopicNameStr && (
+            <p className="route-badge">
+              话题：{routeTopicNameStr} ·{" "}
+              <button className="link" onClick={() => go({ page: "me" })}>
+                调整
+              </button>
+            </p>
           )}
           <div className="journey-actions">
             {active || total > 0 ? (
