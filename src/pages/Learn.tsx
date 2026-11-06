@@ -2,7 +2,7 @@ import { ArrowRight, Check, Lightbulb, RotateCcw, Share2, Volume2, X } from "luc
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { prefetch, useAtlas, useEntry } from "../atlas/context";
 import type { Entry, WordRef } from "../atlas/types";
-import { play, stopAudio } from "../lib/audio";
+import { play, playRecorded, stopAudio } from "../lib/audio";
 import { burst } from "../lib/burst";
 import { cue } from "../lib/sound";
 import { go } from "../lib/router";
@@ -93,16 +93,79 @@ function Intro({ step }: { step: Step }) {
   const { entry } = useEntry(step.id);
   const settings = useStore((s) => s.settings);
   const elapsed = useStepTimer();
+  // Step 1 (word-atlas-custom), listening-first: hide the meaning until the
+  // learner has heard the recorded pronunciation (or chooses to reveal it).
+  const [revealed, setRevealed] = useState(!settings.listenFirst);
+  const [noAudio, setNoAudio] = useState(false);
   useEffect(() => {
-    if (entry && settings.autoplay) void play(atlas.audio(entry, settings.accent), entry.w, settings.accent);
-  }, [entry, atlas, settings.autoplay, settings.accent]);
+    setRevealed(!settings.listenFirst);
+    setNoAudio(false);
+  }, [step.id, settings.listenFirst]);
+  useEffect(() => {
+    if (!entry || !settings.autoplay) return;
+    if (settings.listenFirst) {
+      void playRecorded(atlas.audio(entry, settings.accent)).then((r) => {
+        if (r === "missing") setNoAudio(true);
+      });
+    } else {
+      void play(atlas.audio(entry, settings.accent), entry.w, settings.accent);
+    }
+  }, [entry, atlas, settings.autoplay, settings.accent, settings.listenFirst]);
+  const reveal = useCallback(() => setRevealed(true), []);
   const next = useCallback(() => {
+    // First Enter/Space reveals the meaning; only the next one advances.
+    if (settings.listenFirst && !revealed) {
+      setRevealed(true);
+      return;
+    }
     stopAudio();
     if (store.get().settings.sfx) void cue("flip");
     advance(elapsed());
-  }, [elapsed]);
+  }, [elapsed, settings.listenFirst, revealed]);
   useKeys({ Enter: next, " ": next });
   if (!entry) return <span className="spinner" />;
+  if (settings.listenFirst && !revealed) {
+    return (
+      <div className="intro intro-listen">
+        <p className="stage-label">
+          <span className="dot dot-new" /> 初次见面 · 先听
+        </p>
+        <Illustration src={atlas.img(entry)} word={entry.w} topic={atlas.byId.get(entry.id)?.topic ?? 0} eager />
+        <p className="intro-listen-hint">先听发音，猜一猜这是什么词，再看意思。</p>
+        <div className="intro-listen-actions">
+          <button
+            className="listen-orb"
+            onClick={async () => {
+              const r = await playRecorded(atlas.audio(entry, settings.accent));
+              if (r === "missing") setNoAudio(true);
+            }}
+            aria-label="再听一遍"
+          >
+            <Volume2 size={40} strokeWidth={1.6} />
+            <span />
+          </button>
+          <button
+            className="link"
+            onClick={async () => {
+              const r = await playRecorded(atlas.audio(entry, settings.accent), 0.7);
+              if (r === "missing") setNoAudio(true);
+            }}
+          >
+            慢速再听 0.7×
+          </button>
+        </div>
+        {noAudio && <p className="warn-text">暂无录音，请直接显示意思。</p>}
+        <footer className="learn-actions">
+          <button className="btn btn-primary btn-xl" onClick={reveal} autoFocus>
+            显示意思 <ArrowRight size={20} />
+          </button>
+          <span className="hint-keys">
+            <kbd>Enter</kbd> 显示意思
+          </span>
+        </footer>
+      </div>
+    );
+  }
   return (
     <div className="intro">
       <p className="stage-label">
@@ -149,7 +212,7 @@ function Quiz({ step, session }: { step: Step & { kind: QuizKind }; session: Act
       }
       if (settings.sfx) void cue(correct ? "correct" : "wrong");
       answer(atlas, step, correct, gradeFor(step.kind, correct, ms, hints > 0), value);
-      if (entry) void play(atlas.audio(entry, settings.accent), entry.w, settings.accent);
+      if (entry) void playRecorded(atlas.audio(entry, settings.accent));
     },
     [pending, elapsed, settings, atlas, step, hints, entry],
   );
@@ -159,8 +222,13 @@ function Quiz({ step, session }: { step: Step & { kind: QuizKind }; session: Act
     advance(elapsed());
   }, [elapsed]);
 
+  const [listenMissing, setListenMissing] = useState(false);
   useEffect(() => {
-    if (step.kind === "listen" && entry && !pending) void play(atlas.audio(entry, settings.accent), entry.w, settings.accent);
+    setListenMissing(false);
+    if (step.kind === "listen" && entry && !pending)
+      void playRecorded(atlas.audio(entry, settings.accent)).then((r) => {
+        if (r === "missing") setListenMissing(true);
+      });
   }, [step.kind, entry, atlas, settings.accent, pending]);
 
   const keys: Record<string, () => void> = {};
@@ -211,13 +279,27 @@ function Quiz({ step, session }: { step: Step & { kind: QuizKind }; session: Act
         )}
         {step.kind === "listen" && (
           <div className="prompt-listen">
-            <button className="listen-orb" onClick={() => play(atlas.audio(entry, settings.accent), entry.w, settings.accent)} aria-label="再听一遍">
+            <button
+              className="listen-orb"
+              onClick={async () => {
+                const r = await playRecorded(atlas.audio(entry, settings.accent));
+                if (r === "missing") setListenMissing(true);
+              }}
+              aria-label="再听一遍"
+            >
               <Volume2 size={40} strokeWidth={1.6} />
               <span />
             </button>
-            <button className="link" onClick={() => play(atlas.audio(entry, settings.accent), entry.w, settings.accent, 0.7)}>
-              慢速再听
+            <button
+              className="link"
+              onClick={async () => {
+                const r = await playRecorded(atlas.audio(entry, settings.accent), 0.7);
+                if (r === "missing") setListenMissing(true);
+              }}
+            >
+              慢速再听 0.7×
             </button>
+            {listenMissing && <p className="warn-text">暂无录音</p>}
           </div>
         )}
         {step.kind === "spell" && <SpellPrompt entry={entry} refw={ref} hints={hints} />}
