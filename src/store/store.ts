@@ -55,6 +55,12 @@ export interface Settings {
   sfx: boolean;
   spell: boolean;
   startLevel: number;
+  /** Step 1 (word-atlas-custom): how daily new words are chosen. */
+  routeMode: "level" | "topic";
+  /** Topic key (atlas.topics[0], e.g. "education") used when routeMode is "topic". */
+  routeTopic: string;
+  /** Step 1 (word-atlas-custom): new-word cards play recorded audio before showing the meaning. */
+  listenFirst: boolean;
   onboarded: boolean;
   dataset: "open" | "private";
   ambience: "off" | "stars" | "rain" | "sea" | "forest" | "fire" | "voyage" | "cafe";
@@ -71,6 +77,9 @@ export const defaultSettings: Settings = {
   sfx: true,
   spell: true,
   startLevel: 0,
+  routeMode: "level",
+  routeTopic: "education",
+  listenFirst: true,
   onboarded: false,
   dataset: "open",
   ambience: "stars",
@@ -168,6 +177,9 @@ export function sanitizeSettings(v: unknown): Settings {
   if (typeof v.sfx === "boolean") s.sfx = v.sfx;
   if (typeof v.spell === "boolean") s.spell = v.spell;
   if (num(v.startLevel, 0, 5)) s.startLevel = Math.round(v.startLevel as number);
+  if (v.routeMode === "level" || v.routeMode === "topic") s.routeMode = v.routeMode;
+  if (typeof v.routeTopic === "string" && /^[a-z]+$/.test(v.routeTopic)) s.routeTopic = v.routeTopic;
+  if (typeof v.listenFirst === "boolean") s.listenFirst = v.listenFirst;
   if (typeof v.onboarded === "boolean") s.onboarded = v.onboarded;
   if (v.dataset === "open" || v.dataset === "private") s.dataset = v.dataset;
   if (["off", "stars", "rain", "sea", "forest", "fire", "voyage", "cafe"].includes(v.ambience as string)) s.ambience = v.ambience as Settings["ambience"];
