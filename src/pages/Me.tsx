@@ -2,6 +2,7 @@ import { Download, RotateCcw, Upload } from "lucide-react";
 import { useMemo, useRef } from "react";
 import { useAtlas } from "../atlas/context";
 import { isMastered } from "../store/srs";
+import { topicCounts } from "../store/session";
 import { dayKey, exportBackup, importBackup, resetProgress, store, useStore, type Settings } from "../store/store";
 import { toast } from "../ui/Toast";
 import { streakOf } from "./Today";
@@ -47,6 +48,7 @@ export function Me({ privateAvailable }: { privateAvailable: boolean }) {
     toast(r.ok ? `已恢复 ${r.cards} 个词的记忆` : r.error, r.ok ? "ok" : "warn");
   };
   const maxF = Math.max(1, ...stats.forecast);
+  const topicCountList = useMemo(() => topicCounts(atlas), [atlas]);
 
   return (
     <div className="page me">
@@ -118,10 +120,37 @@ export function Me({ privateAvailable }: { privateAvailable: boolean }) {
               ))}
             </div>
           </Field>
-          <Field label="从哪个难度开始" hint="跳过已经熟悉的低级别词。">
+          <Field label="学习路线" hint="只影响之后安排的新词，已学词的复习和当前这一轮保持不变。">
+            <div className="segmented">
+              <button className={settings.routeMode === "level" ? "is-on" : ""} onClick={() => set({ routeMode: "level" })}>
+                按难度
+              </button>
+              <button className={settings.routeMode === "topic" ? "is-on" : ""} onClick={() => set({ routeMode: "topic" })}>
+                按话题
+              </button>
+            </div>
+          </Field>
+          {settings.routeMode === "topic" && (
+            <Field label="选择话题" hint="当天的新词只从这个话题里出。">
+              <div className="topic-picker">
+                {atlas.topics.map(([key, name], i) => (
+                  <button key={key} className={settings.routeTopic === key ? "is-on" : ""} onClick={() => set({ routeTopic: key })}>
+                    <b>{name}</b>
+                    <small>
+                      {topicCountList[i]} 个词
+                    </small>
+                  </button>
+                ))}
+              </div>
+            </Field>
+          )}
+          <Field
+            label="从哪个难度开始"
+            hint={settings.routeMode === "topic" ? "按话题时不按难度起点，从该话题开头开始学。" : "跳过已经熟悉的低级别词。"}
+          >
             <div className="segmented">
               {atlas.cefr.map((l, i) => (
-                <button key={l} className={settings.startLevel === i ? "is-on" : ""} onClick={() => set({ startLevel: i })}>
+                <button key={l} className={settings.startLevel === i ? "is-on" : ""} disabled={settings.routeMode === "topic"} onClick={() => set({ startLevel: i })}>
                   {l}
                 </button>
               ))}
@@ -162,6 +191,7 @@ export function Me({ privateAvailable }: { privateAvailable: boolean }) {
             </div>
           </Field>
           <Toggle label="自动播放发音" on={settings.autoplay} set={(v) => set({ autoplay: v })} />
+          <Toggle label="新词先听发音再显示意思" on={settings.listenFirst} set={(v) => set({ listenFirst: v })} />
           <Toggle label="界面音效" on={settings.sfx} set={(v) => set({ sfx: v })} />
           <Toggle label="开屏动画（每天一次）" on={settings.splash} set={(v) => set({ splash: v })} />
           <Toggle label="复习时加入拼写题" on={settings.spell} set={(v) => set({ spell: v })} />
