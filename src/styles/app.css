@@ -4120,3 +4120,77 @@ a:hover .mark-needle,
 .streak-panel .mini-stats div:first-child dd {
   color: var(--ochre);
 }
+
+/* ---------- Step 1: by-topic route (word-atlas-custom) ---------- */
+.topic-picker {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 8px;
+  width: 100%;
+}
+.topic-picker button {
+  display: grid;
+  gap: 2px;
+  padding: 10px 8px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper-2);
+  text-align: left;
+  transition: all 0.22s var(--ease);
+}
+.topic-picker button b {
+  font-size: 14px;
+  font-weight: 600;
+}
+.topic-picker button small {
+  font-size: 12px;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+.topic-picker button.is-on {
+  background: var(--card);
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-sm);
+}
+.topic-picker button:disabled {
+  opacity: 0.45;
+}
+.segmented button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.route-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 12px 0 0;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 253, 248, 0.16);
+  color: var(--paper);
+  font-size: 13.5px;
+  font-weight: 500;
+}
+.route-badge .link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.intro-listen {
+  align-items: center;
+  text-align: center;
+}
+.intro-listen .illo {
+  max-width: 440px;
+  margin: 0 auto;
+}
+.intro-listen-hint {
+  margin-top: 16px;
+  color: var(--ink-2);
+}
+.intro-listen-actions {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  margin-top: 20px;
+}
