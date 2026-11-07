@@ -1,0 +1,817 @@
+{
+ "kind": "retelling",
+ "version": 1,
+ "title": "The Little Prince — a simple retelling",
+ "titleZh": "《小王子》简写版",
+ "note": "SIMPLIFIED RETELLING, not the original book. These 12 short chapters retell the story in simple A2 English, written for this app. They do NOT reproduce Antoine de Saint-Exupéry's text or the Katherine Woods English translation. The original book is still under copyright in the United States (first published 1943); the full original text is deliberately NOT bundled here. See README.md / DATA_SOURCES.md for where to read the real book lawfully.",
+ "chapters": [
+  {
+   "n": 1,
+   "title": "The Pilot in the Desert",
+   "titleZh": "沙漠里的飞行员",
+   "keywords": [
+    "pilot",
+    "desert",
+    "plane",
+    "star",
+    "water",
+    "journey",
+    "friend",
+    "morning",
+    "night",
+    "help"
+   ],
+   "sentences": [
+    {
+     "en": "A pilot flies a small plane over the desert.",
+     "zh": "一位飞行员驾驶着一架小飞机飞越沙漠。"
+    },
+    {
+     "en": "One day, the engine stops.",
+     "zh": "有一天，发动机停了。"
+    },
+    {
+     "en": "The plane falls down onto the sand.",
+     "zh": "飞机落到了沙子上。"
+    },
+    {
+     "en": "The pilot is alone.",
+     "zh": "飞行员一个人待着。"
+    },
+    {
+     "en": "He has water for only eight days.",
+     "zh": "他只有八天的水。"
+    },
+    {
+     "en": "He must fix the plane, or he will die.",
+     "zh": "他必须修好飞机，不然就会死。"
+    },
+    {
+     "en": "At night, he looks at the stars.",
+     "zh": "晚上，他看着星星。"
+    },
+    {
+     "en": "The desert is very quiet.",
+     "zh": "沙漠非常安静。"
+    },
+    {
+     "en": "On the second morning, something strange happens.",
+     "zh": "第二天早上，发生了一件奇怪的事。"
+    },
+    {
+     "en": "A little boy is standing next to him.",
+     "zh": "一个小男孩站在他身边。"
+    },
+    {
+     "en": "The boy says, \"Please draw me a sheep.\"",
+     "zh": "男孩说：请给我画一只羊。"
+    },
+    {
+     "en": "The pilot cannot believe his eyes.",
+     "zh": "飞行员不敢相信自己的眼睛。"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "title": "A Very Small Planet",
+   "titleZh": "很小的星球",
+   "keywords": [
+    "planet",
+    "star",
+    "small",
+    "king",
+    "flower",
+    "house",
+    "morning",
+    "evening",
+    "journey",
+    "friend"
+   ],
+   "sentences": [
+    {
+     "en": "The little boy comes from a very small planet.",
+     "zh": "小男孩来自一个非常小的星球。"
+    },
+    {
+     "en": "His planet is not much bigger than a house.",
+     "zh": "他的星球比一所房子大不了多少。"
+    },
+    {
+     "en": "On his planet, there are three small volcanoes.",
+     "zh": "他的星球上有三座小火山。"
+    },
+    {
+     "en": "Every morning, he cleans the volcanoes.",
+     "zh": "每天早上，他打扫火山。"
+    },
+    {
+     "en": "He also pulls out the bad plants.",
+     "zh": "他还会拔掉坏植物。"
+    },
+    {
+     "en": "If he does not do this work, the plants grow too big.",
+     "zh": "如果不做这些事，植物会长得太大。"
+    },
+    {
+     "en": "Then the planet is in danger.",
+     "zh": "那星球就危险了。"
+    },
+    {
+     "en": "The little prince takes good care of his planet.",
+     "zh": "小王子把自己的星球照顾得很好。"
+    },
+    {
+     "en": "He likes to watch the sun go down.",
+     "zh": "他喜欢看日落。"
+    },
+    {
+     "en": "On his planet, he can see the sunset many times a day.",
+     "zh": "在他的星球上，他一天能看很多次日落。"
+    },
+    {
+     "en": "He only needs to move his chair a little.",
+     "zh": "他只需要把椅子挪一点点。"
+    },
+    {
+     "en": "His planet is small, but it is his home.",
+     "zh": "他的星球很小，但那是他的家。"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "title": "The Rose",
+   "titleZh": "玫瑰花",
+   "keywords": [
+    "rose",
+    "flower",
+    "garden",
+    "proud",
+    "water",
+    "morning",
+    "friend",
+    "love",
+    "planet",
+    "star"
+   ],
+   "sentences": [
+    {
+     "en": "One day, a flower grows on the little planet.",
+     "zh": "有一天，小星球上长出一朵花。"
+    },
+    {
+     "en": "It is a rose.",
+     "zh": "那是一朵玫瑰花。"
+    },
+    {
+     "en": "It is very beautiful, and it knows it.",
+     "zh": "它非常美丽，它自己也知道。"
+    },
+    {
+     "en": "The rose is proud.",
+     "zh": "玫瑰花很骄傲。"
+    },
+    {
+     "en": "It asks the little prince to water it every day.",
+     "zh": "它让小王子每天给它浇水。"
+    },
+    {
+     "en": "It asks for a glass cover at night.",
+     "zh": "它让小王子晚上给它盖上玻璃罩。"
+    },
+    {
+     "en": "The little prince takes good care of the rose.",
+     "zh": "小王子把玫瑰花照顾得很好。"
+    },
+    {
+     "en": "But the rose is never happy.",
+     "zh": "但玫瑰花总是不开心。"
+    },
+    {
+     "en": "It always wants more.",
+     "zh": "它总是想要更多。"
+    },
+    {
+     "en": "The little prince feels tired and sad.",
+     "zh": "小王子感到累了，也难过了。"
+    },
+    {
+     "en": "He decides to leave his planet.",
+     "zh": "他决定离开自己的星球。"
+    },
+    {
+     "en": "He wants to see other places and learn new things.",
+     "zh": "他想去看看别的地方，学一些新东西。"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "title": "The King",
+   "titleZh": "国王",
+   "keywords": [
+    "king",
+    "planet",
+    "star",
+    "order",
+    "morning",
+    "evening",
+    "sun",
+    "people",
+    "power",
+    "journey"
+   ],
+   "sentences": [
+    {
+     "en": "The little prince visits the first planet.",
+     "zh": "小王子来到第一颗星球。"
+    },
+    {
+     "en": "A king lives there.",
+     "zh": "一位国王住在那里。"
+    },
+    {
+     "en": "The king wears a long red coat.",
+     "zh": "国王穿着一件长长的红袍。"
+    },
+    {
+     "en": "He is the only person on his planet.",
+     "zh": "他是这个星球上唯一的人。"
+    },
+    {
+     "en": "But he says he is the king of everything.",
+     "zh": "但他说他是一切的国王。"
+    },
+    {
+     "en": "He gives orders all day.",
+     "zh": "他整天发号施令。"
+    },
+    {
+     "en": "He orders the sun to go down in the evening.",
+     "zh": "他命令太阳在晚上落下。"
+    },
+    {
+     "en": "He orders the stars to shine at night.",
+     "zh": "他命令星星在晚上发光。"
+    },
+    {
+     "en": "The little prince is surprised.",
+     "zh": "小王子很惊讶。"
+    },
+    {
+     "en": "The sun goes down in the evening anyway.",
+     "zh": "太阳本来晚上就会落下。"
+    },
+    {
+     "en": "A good order is one that people can really do.",
+     "zh": "好的命令，是人们真的能做到的命令。"
+    },
+    {
+     "en": "The little prince leaves the king and goes on.",
+     "zh": "小王子离开国王，继续前行。"
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "title": "The Man Who Wants Praise",
+   "titleZh": "想要赞美的人",
+   "keywords": [
+    "people",
+    "proud",
+    "star",
+    "planet",
+    "friend",
+    "morning",
+    "clap",
+    "journey",
+    "strange",
+    "love"
+   ],
+   "sentences": [
+    {
+     "en": "On the second planet, there is a strange man.",
+     "zh": "第二颗星球上住着一个奇怪的人。"
+    },
+    {
+     "en": "He wears a funny hat.",
+     "zh": "他戴着一顶滑稽的帽子。"
+    },
+    {
+     "en": "When people meet him, he takes off his hat.",
+     "zh": "有人来时，他就脱下帽子。"
+    },
+    {
+     "en": "He wants people to clap for him.",
+     "zh": "他想让人们为他鼓掌。"
+    },
+    {
+     "en": "He says, \"I am the cleverest man in the world.\"",
+     "zh": "他说：我是世界上最聪明的人。"
+    },
+    {
+     "en": "He says, \"I am the most beautiful man, too.\"",
+     "zh": "他说：我也是最漂亮的人。"
+    },
+    {
+     "en": "The little prince claps for him.",
+     "zh": "小王子为他鼓掌。"
+    },
+    {
+     "en": "The man is very happy.",
+     "zh": "这个人非常高兴。"
+    },
+    {
+     "en": "But the little prince does not understand him.",
+     "zh": "但小王子不理解他。"
+    },
+    {
+     "en": "Why does he need other people to tell him he is good?",
+     "zh": "为什么他需要别人告诉他他很好？"
+    },
+    {
+     "en": "The little prince leaves and thinks about it.",
+     "zh": "小王子离开了，一路想着这件事。"
+    },
+    {
+     "en": "People who only want praise are very strange.",
+     "zh": "只想要赞美的人，真的很奇怪。"
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "title": "The Man Who Drinks",
+   "titleZh": "喝酒的人",
+   "keywords": [
+    "drink",
+    "sorry",
+    "morning",
+    "night",
+    "planet",
+    "people",
+    "forget",
+    "water",
+    "star",
+    "journey"
+   ],
+   "sentences": [
+    {
+     "en": "On the third planet, there is a man with many bottles.",
+     "zh": "第三颗星球上，有一个有很多瓶子的人。"
+    },
+    {
+     "en": "The bottles are full of wine.",
+     "zh": "瓶子里装满了酒。"
+    },
+    {
+     "en": "The little prince asks him, \"What are you doing?\"",
+     "zh": "小王子问他：你在做什么？"
+    },
+    {
+     "en": "The man says, \"I am drinking.\"",
+     "zh": "那人说：我在喝酒。"
+    },
+    {
+     "en": "The little prince asks, \"Why do you drink?\"",
+     "zh": "小王子问：你为什么喝酒？"
+    },
+    {
+     "en": "The man answers, \"To forget.\"",
+     "zh": "那人回答：为了忘记。"
+    },
+    {
+     "en": "\"To forget what?\" asks the little prince.",
+     "zh": "小王子问：忘记什么？"
+    },
+    {
+     "en": "\"To forget that I am sad,\" says the man.",
+     "zh": "那人说：忘记我很难过。"
+    },
+    {
+     "en": "The little prince is very surprised.",
+     "zh": "小王子非常惊讶。"
+    },
+    {
+     "en": "The man drinks because he is sad.",
+     "zh": "这个人因为难过才喝酒。"
+    },
+    {
+     "en": "And drinking makes him sad again.",
+     "zh": "而喝酒又让他再次难过。"
+    },
+    {
+     "en": "The little prince leaves, and feels sorry for the man.",
+     "zh": "小王子离开了，心里为这个人难过。"
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "title": "The Businessman",
+   "titleZh": "商人",
+   "keywords": [
+    "star",
+    "count",
+    "money",
+    "people",
+    "planet",
+    "morning",
+    "night",
+    "business",
+    "journey",
+    "busy"
+   ],
+   "sentences": [
+    {
+     "en": "On the fourth planet, there is a very busy man.",
+     "zh": "第四颗星球上，有一个非常忙的人。"
+    },
+    {
+     "en": "He is counting something all day.",
+     "zh": "他整天都在数东西。"
+    },
+    {
+     "en": "He does not look up when the little prince comes.",
+     "zh": "小王子来了，他也不抬头。"
+    },
+    {
+     "en": "The little prince asks, \"What are you counting?\"",
+     "zh": "小王子问：你在数什么？"
+    },
+    {
+     "en": "The man says, \"The stars. I own them all.\"",
+     "zh": "那人说：星星。我拥有所有的星星。"
+    },
+    {
+     "en": "He counts the stars again and again.",
+     "zh": "他一遍又一遍地数星星。"
+    },
+    {
+     "en": "He writes the number on a piece of paper.",
+     "zh": "他把数字写在一张纸上。"
+    },
+    {
+     "en": "He puts the paper in a box.",
+     "zh": "他把纸放进一个盒子里。"
+    },
+    {
+     "en": "The little prince says, \"But you do nothing with the stars.\"",
+     "zh": "小王子说：可是你没有用星星做任何事。"
+    },
+    {
+     "en": "The man does not answer. He is too busy.",
+     "zh": "那人不回答。他太忙了。"
+    },
+    {
+     "en": "The little prince thinks: owning is not the same as loving.",
+     "zh": "小王子想：拥有和爱是不一样的。"
+    },
+    {
+     "en": "He leaves the businessman behind.",
+     "zh": "他把商人抛在身后。"
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "title": "The Lamplighter",
+   "titleZh": "点灯人",
+   "keywords": [
+    "lamp",
+    "light",
+    "night",
+    "morning",
+    "planet",
+    "star",
+    "time",
+    "people",
+    "friend",
+    "sleep"
+   ],
+   "sentences": [
+    {
+     "en": "On the fifth planet, there is a lamplighter.",
+     "zh": "第五颗星球上，有一个点灯人。"
+    },
+    {
+     "en": "His planet is the smallest of all.",
+     "zh": "他的星球是所有星球中最小的。"
+    },
+    {
+     "en": "There is only one lamp and one lamplighter.",
+     "zh": "那里只有一盏灯和一个点灯人。"
+    },
+    {
+     "en": "The planet turns very fast.",
+     "zh": "这颗星球转得非常快。"
+    },
+    {
+     "en": "Every minute is a new day.",
+     "zh": "每一分钟就是新的一天。"
+    },
+    {
+     "en": "Every minute, the lamplighter lights the lamp.",
+     "zh": "每分钟，点灯人就点亮灯。"
+    },
+    {
+     "en": "Every minute, he puts the lamp out again.",
+     "zh": "每分钟，他又把灯熄灭。"
+    },
+    {
+     "en": "He has no time to rest.",
+     "zh": "他没有时间休息。"
+    },
+    {
+     "en": "He has no time to sleep.",
+     "zh": "他没有时间睡觉。"
+    },
+    {
+     "en": "But he does his work well, every time.",
+     "zh": "但他每一次都把工作做好。"
+    },
+    {
+     "en": "The little prince likes him.",
+     "zh": "小王子喜欢他。"
+    },
+    {
+     "en": "His work is for other people, not only for himself.",
+     "zh": "他的工作是为了别人，不只是为了自己。"
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "title": "The Geographer",
+   "titleZh": "地理学家",
+   "keywords": [
+    "map",
+    "mountain",
+    "river",
+    "desert",
+    "ocean",
+    "planet",
+    "star",
+    "book",
+    "people",
+    "journey"
+   ],
+   "sentences": [
+    {
+     "en": "On the sixth planet, there is a geographer.",
+     "zh": "第六颗星球上，有一位地理学家。"
+    },
+    {
+     "en": "He has many big books.",
+     "zh": "他有很多大书。"
+    },
+    {
+     "en": "He writes about mountains and rivers.",
+     "zh": "他写山川和河流。"
+    },
+    {
+     "en": "He writes about deserts and oceans.",
+     "zh": "他写沙漠和海洋。"
+    },
+    {
+     "en": "But he never leaves his desk.",
+     "zh": "但他从不离开自己的桌子。"
+    },
+    {
+     "en": "He has never seen a mountain.",
+     "zh": "他从没见过一座山。"
+    },
+    {
+     "en": "He has never seen a river.",
+     "zh": "他从没见过一条河。"
+    },
+    {
+     "en": "He only asks other people what they saw.",
+     "zh": "他只问别人看到了什么。"
+    },
+    {
+     "en": "He tells the little prince, \"Your flower will not last.\"",
+     "zh": "他告诉小王子：你的花不会长久。"
+    },
+    {
+     "en": "Flowers do not live long, he says.",
+     "zh": "他说，花活不长。"
+    },
+    {
+     "en": "The little prince feels sad for the first time.",
+     "zh": "小王子第一次感到难过。"
+    },
+    {
+     "en": "He thinks of his rose, alone on his small planet.",
+     "zh": "他想起自己的玫瑰花，独自在小小的星球上。"
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "title": "The Fox",
+   "titleZh": "狐狸",
+   "keywords": [
+    "fox",
+    "friend",
+    "planet",
+    "desert",
+    "morning",
+    "evening",
+    "star",
+    "love",
+    "secret",
+    "journey"
+   ],
+   "sentences": [
+    {
+     "en": "The little prince comes to the Earth.",
+     "zh": "小王子来到了地球。"
+    },
+    {
+     "en": "In the desert, he meets a fox.",
+     "zh": "在沙漠里，他遇到一只狐狸。"
+    },
+    {
+     "en": "The fox says, \"Please make friends with me.\"",
+     "zh": "狐狸说：请和我做朋友。"
+    },
+    {
+     "en": "The little prince asks, \"What does that mean?\"",
+     "zh": "小王子问：那是什么意思？"
+    },
+    {
+     "en": "The fox says, \"It means we need each other.\"",
+     "zh": "狐狸说：意思是我们彼此需要。"
+    },
+    {
+     "en": "Every day, the little prince comes at the same time.",
+     "zh": "每天，小王子都在同一时间来。"
+    },
+    {
+     "en": "The fox waits for him, and its heart beats fast.",
+     "zh": "狐狸等着他，心跳得很快。"
+    },
+    {
+     "en": "They play together and talk together.",
+     "zh": "他们一起玩，一起聊天。"
+    },
+    {
+     "en": "Slowly, they become friends.",
+     "zh": "慢慢地，他们成了朋友。"
+    },
+    {
+     "en": "Before he leaves, the fox tells him a secret.",
+     "zh": "临走前，狐狸告诉他一个秘密。"
+    },
+    {
+     "en": "You can only see the really important things with your heart.",
+     "zh": "只有用心，才能看到真正重要的东西。"
+    },
+    {
+     "en": "Your eyes cannot see them.",
+     "zh": "你的眼睛看不到它们。"
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "title": "The Snake and the Well",
+   "titleZh": "蛇和水井",
+   "keywords": [
+    "snake",
+    "desert",
+    "water",
+    "night",
+    "star",
+    "friend",
+    "pilot",
+    "thirsty",
+    "journey",
+    "sand"
+   ],
+   "sentences": [
+    {
+     "en": "The little prince walks in the desert.",
+     "zh": "小王子走在沙漠里。"
+    },
+    {
+     "en": "He is thirsty, and so is the pilot.",
+     "zh": "他很渴，飞行员也很渴。"
+    },
+    {
+     "en": "They walk for a long time.",
+     "zh": "他们走了很久。"
+    },
+    {
+     "en": "Then they find a well.",
+     "zh": "然后他们找到一口井。"
+    },
+    {
+     "en": "The water in the well is sweet and cold.",
+     "zh": "井里的水又甜又凉。"
+    },
+    {
+     "en": "They drink, and they feel happy.",
+     "zh": "他们喝了水，感到很高兴。"
+    },
+    {
+     "en": "The little prince says, \"People are thirsty for something more.\"",
+     "zh": "小王子说：人们渴望的东西比水更多。"
+    },
+    {
+     "en": "At night, a yellow snake comes.",
+     "zh": "夜里，一条黄色的蛇来了。"
+    },
+    {
+     "en": "The snake is dangerous, but the little prince is not afraid.",
+     "zh": "蛇很危险，但小王子不害怕。"
+    },
+    {
+     "en": "The pilot is very worried.",
+     "zh": "飞行员非常担心。"
+    },
+    {
+     "en": "The little prince says, \"Do not be sad. I must go home.\"",
+     "zh": "小王子说：别难过。我必须回家了。"
+    },
+    {
+     "en": "His home is far away, on his small planet.",
+     "zh": "他的家很远，在他的小小的星球上。"
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "title": "Goodbye",
+   "titleZh": "再见",
+   "keywords": [
+    "star",
+    "night",
+    "friend",
+    "laugh",
+    "planet",
+    "rose",
+    "pilot",
+    "desert",
+    "journey",
+    "home"
+   ],
+   "sentences": [
+    {
+     "en": "It is time for the little prince to go home.",
+     "zh": "小王子要回家了。"
+    },
+    {
+     "en": "The pilot is very sad.",
+     "zh": "飞行员非常难过。"
+    },
+    {
+     "en": "The little prince says, \"Do not cry.\"",
+     "zh": "小王子说：别哭。"
+    },
+    {
+     "en": "\"When you look at the stars at night, think of me.\"",
+     "zh": "晚上你看星星的时候，就想想我。"
+    },
+    {
+     "en": "\"On one of the stars, I will be laughing.\"",
+     "zh": "在其中一颗星星上，我会笑着。"
+    },
+    {
+     "en": "\"Then all the stars will laugh with you.\"",
+     "zh": "然后所有的星星都会陪你一起笑。"
+    },
+    {
+     "en": "The little prince walks away into the desert.",
+     "zh": "小王子走进沙漠，越走越远。"
+    },
+    {
+     "en": "The pilot watches him until he cannot see him.",
+     "zh": "飞行员一直看着他，直到再也看不见。"
+    },
+    {
+     "en": "The little prince's story ends, but the stars are still there.",
+     "zh": "小王子的故事结束了，但星星还在那里。"
+    },
+    {
+     "en": "The pilot fixes his plane and flies home.",
+     "zh": "飞行员修好飞机，飞回了家。"
+    },
+    {
+     "en": "But he never forgets the little prince.",
+     "zh": "但他永远忘不了小王子。"
+    },
+    {
+     "en": "At night, he still looks at the stars.",
+     "zh": "夜里，他依然看着星星。"
+    },
+    {
+     "en": "And sometimes, he thinks he can hear them laugh.",
+     "zh": "有时候，他觉得自己能听见星星在笑。"
+    }
+   ]
+  }
+ ]
+}
