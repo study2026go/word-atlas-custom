@@ -1,0 +1,1003 @@
+{
+ "kind": "original-passages",
+ "note": "All 12 passages are ORIGINAL texts written for this app (simple graded English + Chinese translation). They are NOT copied from the live Word Atlas site, whose 732 passages are not in the public repo. Licence: CC BY 4.0, attribution 'Word Atlas custom fork'. Keywords are atlas word ids — tap one to open its word card.",
+ "passages": [
+  {
+   "id": "p-a1-01",
+   "keywords": [
+    "market",
+    "morning",
+    "mother",
+    "fresh",
+    "apple",
+    "orange",
+    "bread",
+    "buy",
+    "money",
+    "home"
+   ],
+   "level": "A1",
+   "minutes": 2,
+   "questions": [
+    {
+     "answer": "true",
+     "q": "Anna goes to the market on Saturday.",
+     "qZh": "安娜是在星期六去集市的。",
+     "why": "第一句说 It is Saturday morning。"
+    },
+    {
+     "answer": "false",
+     "q": "Anna's mother buys three kilos of apples.",
+     "qZh": "安娜的妈妈买了三公斤苹果。",
+     "why": "文中说的是 two kilos，两公斤。"
+    },
+    {
+     "answer": "not given",
+     "q": "Anna's father is at the market too.",
+     "qZh": "安娜的爸爸也在集市上。",
+     "why": "文中只提到了妈妈，没有提到爸爸。"
+    }
+   ],
+   "sentences": [
+    {
+     "en": "It is Saturday morning.",
+     "zh": "星期六早上。"
+    },
+    {
+     "en": "Anna goes to the market with her mother.",
+     "zh": "安娜和妈妈一起去集市。"
+    },
+    {
+     "en": "The market is full of people.",
+     "zh": "集市上人很多。"
+    },
+    {
+     "en": "There are fresh apples, oranges and bread.",
+     "zh": "那里有新鲜的苹果、橙子和面包。"
+    },
+    {
+     "en": "Anna likes the red apples.",
+     "zh": "安娜喜欢红苹果。"
+    },
+    {
+     "en": "Her mother buys two kilos of apples.",
+     "zh": "妈妈买了两公斤苹果。"
+    },
+    {
+     "en": "The apples are not expensive.",
+     "zh": "苹果不贵。"
+    },
+    {
+     "en": "Then they buy bread for breakfast.",
+     "zh": "然后她们买了早餐吃的面包。"
+    },
+    {
+     "en": "Anna says hello to the old seller.",
+     "zh": "安娜向年老的摊主问好。"
+    },
+    {
+     "en": "They go home with a big bag.",
+     "zh": "她们提着一大袋东西回家了。"
+    }
+   ],
+   "title": "A Morning Market",
+   "titleZh": "早上的集市",
+   "topic": "daily"
+  },
+  {
+   "id": "p-a1-02",
+   "keywords": [
+    "garden",
+    "flower",
+    "water",
+    "sun",
+    "bird",
+    "tree",
+    "spring",
+    "book",
+    "read",
+    "friend"
+   ],
+   "level": "A1",
+   "minutes": 2,
+   "questions": [
+    {
+     "answer": "true",
+     "q": "The garden is behind the house.",
+     "qZh": "花园在房子后面。",
+     "why": "第一句说 behind my house。"
+    },
+    {
+     "answer": "false",
+     "q": "The writer waters the flowers in the evening.",
+     "qZh": "作者晚上给花浇水。",
+     "why": "文中说的是 Every morning，每天早上。"
+    },
+    {
+     "answer": "not given",
+     "q": "The writer has a dog in the garden.",
+     "qZh": "作者的花园里有一条狗。",
+     "why": "文中提到了鸟，没有提到狗。"
+    }
+   ],
+   "sentences": [
+    {
+     "en": "I have a little garden behind my house.",
+     "zh": "我家后面有一个小花园。"
+    },
+    {
+     "en": "There are red flowers and green trees in it.",
+     "zh": "里面有红色的花和绿色的树。"
+    },
+    {
+     "en": "Every morning, I water the flowers.",
+     "zh": "每天早上，我给花浇水。"
+    },
+    {
+     "en": "The sun is warm and the air is clean.",
+     "zh": "阳光温暖，空气清新。"
+    },
+    {
+     "en": "Birds sing in the trees.",
+     "zh": "鸟儿在树上唱歌。"
+    },
+    {
+     "en": "My garden is quiet and beautiful.",
+     "zh": "我的花园安静又美丽。"
+    },
+    {
+     "en": "In spring, new flowers grow every day.",
+     "zh": "春天里，每天都有新花开放。"
+    },
+    {
+     "en": "I like to read a book in the garden.",
+     "zh": "我喜欢在花园里看书。"
+    },
+    {
+     "en": "My friend comes to see the flowers too.",
+     "zh": "我的朋友也来看花。"
+    },
+    {
+     "en": "We sit under the tree and talk.",
+     "zh": "我们坐在树下聊天。"
+    }
+   ],
+   "title": "My Little Garden",
+   "titleZh": "我的小花园",
+   "topic": "nature"
+  },
+  {
+   "id": "p-a1-03",
+   "keywords": [
+    "bus",
+    "school",
+    "morning",
+    "ticket",
+    "window",
+    "city",
+    "journey",
+    "friend",
+    "class",
+    "early"
+   ],
+   "level": "A1",
+   "minutes": 2,
+   "questions": [
+    {
+     "answer": "false",
+     "q": "Tom walks to school every day.",
+     "qZh": "汤姆每天走路去学校。",
+     "why": "文中说他 by bus，坐公交车。"
+    },
+    {
+     "answer": "true",
+     "q": "The bus comes at half past seven.",
+     "qZh": "公交车七点半到。",
+     "why": "文中原句就是这样。"
+    },
+    {
+     "answer": "not given",
+     "q": "Tom's school is far from his home.",
+     "qZh": "汤姆的学校离他家很远。",
+     "why": "文中只说了车程二十分钟，没有说远近。"
+    }
+   ],
+   "sentences": [
+    {
+     "en": "Tom goes to school by bus every day.",
+     "zh": "汤姆每天坐公交车去学校。"
+    },
+    {
+     "en": "He gets up at seven in the morning.",
+     "zh": "他早上七点起床。"
+    },
+    {
+     "en": "The bus stop is near his home.",
+     "zh": "公交站离他家很近。"
+    },
+    {
+     "en": "The bus comes at half past seven.",
+     "zh": "公交车七点半到。"
+    },
+    {
+     "en": "Tom sits by the window.",
+     "zh": "汤姆坐在窗边。"
+    },
+    {
+     "en": "He can see the city on the way.",
+     "zh": "路上他能看到城市。"
+    },
+    {
+     "en": "The bus ride is about twenty minutes.",
+     "zh": "坐车大约要二十分钟。"
+    },
+    {
+     "en": "At school, Tom meets his friends.",
+     "zh": "到了学校，汤姆见到朋友们。"
+    },
+    {
+     "en": "They go to class together.",
+     "zh": "他们一起去上课。"
+    },
+    {
+     "en": "Tom likes the morning bus ride.",
+     "zh": "汤姆喜欢早上的这趟车。"
+    }
+   ],
+   "title": "The Bus to School",
+   "titleZh": "去学校的公交车",
+   "topic": "travel"
+  },
+  {
+   "id": "p-a1-04",
+   "keywords": [
+    "tea",
+    "morning",
+    "hot",
+    "smell",
+    "table",
+    "window",
+    "tree",
+    "calm",
+    "favourite",
+    "tomorrow"
+   ],
+   "level": "A1",
+   "minutes": 2,
+   "questions": [
+    {
+     "answer": "true",
+     "q": "Grandma makes tea in the afternoon.",
+     "qZh": "奶奶下午泡茶。",
+     "why": "第一句说 In the afternoon。"
+    },
+    {
+     "answer": "false",
+     "q": "Grandma drinks her tea very fast.",
+     "qZh": "奶奶喝茶喝得很快。",
+     "why": "文中说 slowly，慢慢地。"
+    },
+    {
+     "answer": "not given",
+     "q": "Grandma likes coffee more than tea.",
+     "qZh": "奶奶比起茶更喜欢咖啡。",
+     "why": "文中没有提到咖啡。"
+    }
+   ],
+   "sentences": [
+    {
+     "en": "In the afternoon, Grandma makes a cup of tea.",
+     "zh": "下午，奶奶泡了一杯茶。"
+    },
+    {
+     "en": "The tea is hot and smells very good.",
+     "zh": "茶很烫，闻起来很香。"
+    },
+    {
+     "en": "She puts the cup on the small table.",
+     "zh": "她把杯子放在小桌子上。"
+    },
+    {
+     "en": "Then she sits by the window.",
+     "zh": "然后她坐在窗边。"
+    },
+    {
+     "en": "She drinks her tea slowly.",
+     "zh": "她慢慢地喝茶。"
+    },
+    {
+     "en": "She looks at the trees outside.",
+     "zh": "她看着窗外的树。"
+    },
+    {
+     "en": "A cup of tea makes her feel calm.",
+     "zh": "一杯茶让她感到平静。"
+    },
+    {
+     "en": "I sit with her and we talk.",
+     "zh": "我陪她坐着，我们聊聊天。"
+    },
+    {
+     "en": "Tea time is my favourite time of the day.",
+     "zh": "喝茶的时间是我一天中最喜欢的时间。"
+    },
+    {
+     "en": "Tomorrow, I will make tea for Grandma.",
+     "zh": "明天，我要给奶奶泡茶。"
+    }
+   ],
+   "title": "A Cup of Tea",
+   "titleZh": "一杯茶",
+   "topic": "daily"
+  },
+  {
+   "id": "p-a2-01",
+   "keywords": [
+    "library",
+    "hill",
+    "book",
+    "student",
+    "read",
+    "story",
+    "star",
+    "sun",
+    "friend",
+    "school"
+   ],
+   "level": "A2",
+   "minutes": 2,
+   "questions": [
+    {
+     "answer": "false",
+     "q": "The library is big and new.",
+     "qZh": "这座图书馆又大又新。",
+     "why": "文中说 It is small, old library，又小又旧。"
+    },
+    {
+     "answer": "true",
+     "q": "The writer goes to the library every Friday.",
+     "qZh": "作者每个星期五都去图书馆。",
+     "why": "文中说 Every Friday, I go there after class。"
+    },
+    {
+     "answer": "not given",
+     "q": "The librarian is the writer's grandfather.",
+     "qZh": "图书管理员是作者的爷爷。",
+     "why": "文中只说他是一位和蔼的老人，没有说和作者的关系。"
+    }
+   ],
+   "sentences": [
+    {
+     "en": "There is an old library on the hill near my school.",
+     "zh": "我学校附近的山上有一座旧图书馆。"
+    },
+    {
+     "en": "It is small, but it has many good books.",
+     "zh": "它很小，但里面有很多好书。"
+    },
+    {
+     "en": "Every Friday, I go there after class.",
+     "zh": "每个星期五，放学后我去那里。"
+    },
+    {
+     "en": "The librarian is a kind old man.",
+     "zh": "图书管理员是一位和蔼的老人。"
+    },
+    {
+     "en": "He always helps me find the books I need.",
+     "zh": "他总是帮我找到我需要的书。"
+    },
+    {
+     "en": "Last week, I read a book about the stars.",
+     "zh": "上周，我读了一本关于星星的书。"
+    },
+    {
+     "en": "The book says stars are like the sun, only very far away.",
+     "zh": "书上说星星就像太阳，只是非常远。"
+    },
+    {
+     "en": "I told my friends about it at school.",
+     "zh": "我在学校把这件事告诉了朋友们。"
+    },
+    {
+     "en": "Now they want to visit the library too.",
+     "zh": "现在他们也想去图书馆看看。"
+    },
+    {
+     "en": "A good book can take you to a new world.",
+     "zh": "一本好书可以带你去一个新世界。"
+    }
+   ],
+   "title": "The Library on the Hill",
+   "titleZh": "山上的图书馆",
+   "topic": "education"
+  },
+  {
+   "id": "p-a2-02",
+   "keywords": [
+    "rain",
+    "weekend",
+    "home",
+    "cook",
+    "rice",
+    "grandmother",
+    "kitchen",
+    "smell",
+    "game",
+    "journey"
+   ],
+   "level": "A2",
+   "minutes": 2,
+   "questions": [
+    {
+     "answer": "true",
+     "q": "It rained on Saturday and Sunday.",
+     "qZh": "星期六和星期天都下雨了。",
+     "why": "文中说 It rained all weekend，星期天雨只是短暂地停了一会儿。"
+    },
+    {
+     "answer": "false",
+     "q": "Maria cooked lunch alone.",
+     "qZh": "玛丽亚一个人做了午饭。",
+     "why": "文中说 they cooked together，是一起做的。"
+    },
+    {
+     "answer": "not given",
+     "q": "Maria's family went to the cinema on Sunday.",
+     "qZh": "玛丽亚一家星期天去看了电影。",
+     "why": "文中说他们去公园散步，没有提到电影院。"
+    }
+   ],
+   "sentences": [
+    {
+     "en": "It rained all weekend.",
+     "zh": "整个周末都在下雨。"
+    },
+    {
+     "en": "Maria stayed at home with her family.",
+     "zh": "玛丽亚和家人待在家里。"
+    },
+    {
+     "en": "On Saturday, they cooked a big lunch together.",
+     "zh": "星期六，他们一起做了一顿丰盛的午饭。"
+    },
+    {
+     "en": "Maria's grandmother taught her to make rice and soup.",
+     "zh": "奶奶教她做米饭和汤。"
+    },
+    {
+     "en": "The kitchen smelled wonderful.",
+     "zh": "厨房里香极了。"
+    },
+    {
+     "en": "After lunch, they played a word game.",
+     "zh": "午饭后，他们玩了一个文字游戏。"
+    },
+    {
+     "en": "Maria's little brother won the game.",
+     "zh": "玛丽亚的小弟弟赢了游戏。"
+    },
+    {
+     "en": "On Sunday, the rain stopped for a short time.",
+     "zh": "星期天，雨短暂地停了一会儿。"
+    },
+    {
+     "en": "They went for a walk in the park.",
+     "zh": "他们去公园散了步。"
+    },
+    {
+     "en": "Maria thinks a rainy weekend at home can be nice too.",
+     "zh": "玛丽亚觉得，在家度过一个下雨的周末也可以很美好。"
+    },
+    {
+     "en": "Sometimes, the best journeys are the ones at home.",
+     "zh": "有时候，最好的旅程就在家里。"
+    }
+   ],
+   "title": "A Rainy Weekend",
+   "titleZh": "一个下雨的周末",
+   "topic": "daily"
+  },
+  {
+   "id": "p-a2-03",
+   "keywords": [
+    "bicycle",
+    "journey",
+    "mountain",
+    "road",
+    "wind",
+    "rain",
+    "leg",
+    "strong",
+    "evening",
+    "village"
+   ],
+   "level": "A2",
+   "minutes": 2,
+   "questions": [
+    {
+     "answer": "true",
+     "q": "Jack bought the bicycle second-hand.",
+     "qZh": "杰克的自行车是二手的。",
+     "why": "文中说 second-hand bicycle。"
+    },
+    {
+     "answer": "false",
+     "q": "Jack rides his bicycle to the next town every day.",
+     "qZh": "杰克每天骑车去下一个镇。",
+     "why": "文中说 on Sundays, on weekdays he goes by bus。"
+    },
+    {
+     "answer": "not given",
+     "q": "Jack wants a new bicycle next year.",
+     "qZh": "杰克明年想要一辆新车。",
+     "why": "文中没有提到他想换车。"
+    }
+   ],
+   "sentences": [
+    {
+     "en": "Jack has an old second-hand bicycle.",
+     "zh": "杰克有一辆旧的二手自行车。"
+    },
+    {
+     "en": "It is blue, and it works very well.",
+     "zh": "它是蓝色的，骑起来很好。"
+    },
+    {
+     "en": "On Sundays, he rides it to the next village.",
+     "zh": "星期天，他骑着它去下一个村子。"
+    },
+    {
+     "en": "The road goes up a small hill.",
+     "zh": "路要上一个小山坡。"
+    },
+    {
+     "en": "At first, Jack was very tired.",
+     "zh": "一开始，杰克觉得很累。"
+    },
+    {
+     "en": "His legs hurt and the wind was strong.",
+     "zh": "他的腿很疼，风也很大。"
+    },
+    {
+     "en": "But after a few weeks, he became stronger.",
+     "zh": "但几周后，他变强壮了。"
+    },
+    {
+     "en": "Now the hill feels easy.",
+     "zh": "现在这个山坡骑起来很轻松。"
+    },
+    {
+     "en": "On the way back, he often stops to watch the sunset.",
+     "zh": "回来的路上，他常常停下来看日落。"
+    },
+    {
+     "en": "Riding a bicycle is a slow journey, but a happy one.",
+     "zh": "骑自行车是一场慢旅程，但很快乐。"
+    }
+   ],
+   "title": "The Old Bicycle",
+   "titleZh": "旧自行车",
+   "topic": "travel"
+  },
+  {
+   "id": "p-a2-04",
+   "keywords": [
+    "market",
+    "apple",
+    "fresh",
+    "orange",
+    "seller",
+    "price",
+    "family",
+    "grandmother",
+    "cook",
+    "rice"
+   ],
+   "level": "A2",
+   "minutes": 2,
+   "questions": [
+    {
+     "answer": "true",
+     "q": "Grandma checks the apples carefully before she buys them.",
+     "qZh": "奶奶买苹果之前会仔细检查。",
+     "why": "文中说 She checks every apple before she buys。"
+    },
+    {
+     "answer": "false",
+     "q": "The market apples cost more than the shop apples.",
+     "qZh": "集市上的苹果比商店里的贵。",
+     "why": "文中说 the market apples are better and cheaper，又好又便宜。"
+    },
+    {
+     "answer": "not given",
+     "q": "Grandma goes to the market with her daughter.",
+     "qZh": "奶奶和女儿一起去集市。",
+     "why": "文中说和 granddaughter（孙女）一起去，没有提到女儿。"
+    }
+   ],
+   "sentences": [
+    {
+     "en": "My grandmother goes to the market every Sunday morning.",
+     "zh": "奶奶每个星期天早上都去集市。"
+    },
+    {
+     "en": "I often go with her.",
+     "zh": "我经常和她一起去。"
+    },
+    {
+     "en": "She knows all the sellers there.",
+     "zh": "她认识那里的所有摊主。"
+    },
+    {
+     "en": "The apple seller smiles when he sees us.",
+     "zh": "卖苹果的摊主看到我们就笑。"
+    },
+    {
+     "en": "She checks every apple before she buys.",
+     "zh": "买之前，她会一个一个检查苹果。"
+    },
+    {
+     "en": "\"Fresh apples are heavy and smell sweet,\" she says.",
+     "zh": "她说：新鲜的苹果沉甸甸的，闻起来很甜。"
+    },
+    {
+     "en": "She buys apples, oranges and rice for the week.",
+     "zh": "她买了一周要吃的苹果、橙子和米。"
+    },
+    {
+     "en": "The market apples are better and cheaper than the ones in the shop.",
+     "zh": "集市上的苹果比商店里的又好又便宜。"
+    },
+    {
+     "en": "At home, she cooks a big lunch for the whole family.",
+     "zh": "回到家，她给全家人做了一顿丰盛的午饭。"
+    },
+    {
+     "en": "Going to the market with Grandma is my favourite part of Sunday.",
+     "zh": "和奶奶一起去集市，是我星期天最喜欢的事。"
+    }
+   ],
+   "title": "Going to the Market with Grandma",
+   "titleZh": "和奶奶去集市",
+   "topic": "daily"
+  },
+  {
+   "id": "p-b1-01",
+   "keywords": [
+    "memory",
+    "brain",
+    "name",
+    "face",
+    "remember",
+    "forget",
+    "science",
+    "study",
+    "question",
+    "think"
+   ],
+   "level": "B1",
+   "minutes": 2,
+   "questions": [
+    {
+     "answer": "false",
+     "q": "Scientists say our memory works like a video camera.",
+     "qZh": "科学家说我们的记忆像一台摄像机。",
+     "why": "文中明确说记忆不像录像（not like a video）。"
+    },
+    {
+     "answer": "true",
+     "q": "Remembering a name is easier when you use it in a conversation.",
+     "qZh": "在对话中使用一个名字，更容易记住它。",
+     "why": "文中说 Use the name soon, and it stays longer。"
+    },
+    {
+     "answer": "not given",
+     "q": "Older people forget names more than young people.",
+     "qZh": "老年人比年轻人更容易忘名字。",
+     "why": "文中没有比较不同年龄的人。"
+    }
+   ],
+   "sentences": [
+    {
+     "en": "Why do we forget people's names?",
+     "zh": "为什么我们会忘记别人的名字？"
+    },
+    {
+     "en": "Scientists say it is very common.",
+     "zh": "科学家说这很常见。"
+    },
+    {
+     "en": "Our memory is not like a video camera.",
+     "zh": "我们的记忆不像一台摄像机。"
+    },
+    {
+     "en": "It does not keep everything we see and hear.",
+     "zh": "它不会把我们看到和听到的都存下来。"
+    },
+    {
+     "en": "We remember things that are important to us.",
+     "zh": "我们记住的是对我们重要的事。"
+    },
+    {
+     "en": "A name is just a sound, so it is easy to forget.",
+     "zh": "名字只是一个声音，所以很容易忘掉。"
+    },
+    {
+     "en": "But there is good news: you can train your memory.",
+     "zh": "但有个好消息：记忆是可以训练的。"
+    },
+    {
+     "en": "When you meet someone new, say their name in a sentence.",
+     "zh": "认识新朋友时，在句子里说出他的名字。"
+    },
+    {
+     "en": "Ask them a question with their name in it.",
+     "zh": "问他一个问题，问题里带上他的名字。"
+    },
+    {
+     "en": "Use the name soon, and it will stay in your memory longer.",
+     "zh": "很快用上这个名字，它在你记忆里留得更久。"
+    },
+    {
+     "en": "Our brain remembers what we use, not what we only hear once.",
+     "zh": "我们的大脑记住的是我们用过的东西，而不是只听过一次的东西。"
+    }
+   ],
+   "title": "Why We Forget Names",
+   "titleZh": "为什么我们会忘记名字",
+   "topic": "thinking"
+  },
+  {
+   "id": "p-b1-02",
+   "keywords": [
+    "job",
+    "interview",
+    "office",
+    "manager",
+    "question",
+    "answer",
+    "nervous",
+    "experience",
+    "company",
+    "future"
+   ],
+   "level": "B1",
+   "minutes": 2,
+   "questions": [
+    {
+     "answer": "true",
+     "q": "Li Wei prepared by reading about the company.",
+     "qZh": "李伟通过了解这家公司来做准备。",
+     "why": "文中说 He read about the company and practised his answers。"
+    },
+    {
+     "answer": "false",
+     "q": "Li Wei got the job on the same day.",
+     "qZh": "李伟当天就得到了这份工作。",
+     "why": "文中说 Three days later, they called him，三天后才打电话。"
+    },
+    {
+     "answer": "not given",
+     "q": "The job was in another city.",
+     "qZh": "这份工作在另一个城市。",
+     "why": "文中没有提到工作地点。"
+    }
+   ],
+   "sentences": [
+    {
+     "en": "Last month, Li Wei had a job interview.",
+     "zh": "上个月，李伟参加了一次求职面试。"
+    },
+    {
+     "en": "It was for a job in a small company near his home.",
+     "zh": "那是离他家不远的一家小公司的工作。"
+    },
+    {
+     "en": "He prepared for a whole week.",
+     "zh": "他准备了整整一周。"
+    },
+    {
+     "en": "He read about the company and practised his answers.",
+     "zh": "他了解了这家公司，还练习了怎么回答问题。"
+    },
+    {
+     "en": "On the day, he was nervous, but he arrived early.",
+     "zh": "面试那天他很紧张，但他提前到了。"
+    },
+    {
+     "en": "The manager asked him about his experience.",
+     "zh": "经理问了他过去的工作经历。"
+    },
+    {
+     "en": "Li Wei spoke slowly and answered every question.",
+     "zh": "李伟慢慢地说，回答了每一个问题。"
+    },
+    {
+     "en": "At the end, he asked the manager one question.",
+     "zh": "最后，他也问了经理一个问题。"
+    },
+    {
+     "en": "\"What will my first month look like?\" he asked.",
+     "zh": "他问：我第一个月的工作会是什么样子？"
+    },
+    {
+     "en": "The manager smiled.",
+     "zh": "经理笑了。"
+    },
+    {
+     "en": "Three days later, they called him: he got the job.",
+     "zh": "三天后，他们打来电话：他得到了这份工作。"
+    }
+   ],
+   "title": "A Job Interview",
+   "titleZh": "一次求职面试",
+   "topic": "work"
+  },
+  {
+   "id": "p-b1-03",
+   "keywords": [
+    "river",
+    "festival",
+    "music",
+    "boat",
+    "dance",
+    "family",
+    "history",
+    "market",
+    "smile",
+    "traditional"
+   ],
+   "level": "B1",
+   "minutes": 2,
+   "questions": [
+    {
+     "answer": "true",
+     "q": "The River Festival has been held for more than a hundred years.",
+     "qZh": "河流节已经举办了一百多年。",
+     "why": "文中说 more than a hundred years。"
+    },
+    {
+     "answer": "false",
+     "q": "Only young people take part in the festival.",
+     "qZh": "只有年轻人才参加这个节日。",
+     "why": "文中说 people of all ages，所有年龄的人都参加。"
+    },
+    {
+     "answer": "not given",
+     "q": "The festival takes place in spring.",
+     "qZh": "这个节日在春天举行。",
+     "why": "文中说 every summer，每年夏天。"
+    }
+   ],
+   "sentences": [
+    {
+     "en": "Every summer, our town has a river festival.",
+     "zh": "每年夏天，我们镇上都会举办河流节。"
+    },
+    {
+     "en": "The festival is more than a hundred years old.",
+     "zh": "这个节日已经有一百多年的历史了。"
+    },
+    {
+     "en": "In the morning, boats go down the river.",
+     "zh": "早上，船只顺着河往下走。"
+    },
+    {
+     "en": "People on the boats sing and wave to the crowd.",
+     "zh": "船上的人唱歌，向人群挥手。"
+    },
+    {
+     "en": "In the afternoon, there is music and dancing in the market square.",
+     "zh": "下午，集市广场上有音乐和舞蹈。"
+    },
+    {
+     "en": "Old people teach young people the traditional dances.",
+     "zh": "老人教年轻人跳传统舞蹈。"
+    },
+    {
+     "en": "Families bring food and eat together by the river.",
+     "zh": "家家户户带上食物，在河边一起吃。"
+    },
+    {
+     "en": "In the evening, small lights shine on the water.",
+     "zh": "晚上，小灯在水面上闪烁。"
+    },
+    {
+     "en": "The festival brings people of all ages together.",
+     "zh": "这个节日把所有年龄的人聚在一起。"
+    },
+    {
+     "en": "It helps us remember our history and our home.",
+     "zh": "它帮助我们记住自己的历史和家乡。"
+    }
+   ],
+   "title": "The River Festival",
+   "titleZh": "河流节",
+   "topic": "society"
+  },
+  {
+   "id": "p-b1-04",
+   "keywords": [
+    "forest",
+    "tree",
+    "school",
+    "student",
+    "nature",
+    "science",
+    "future",
+    "clean",
+    "air",
+    "journey"
+   ],
+   "level": "B1",
+   "minutes": 2,
+   "questions": [
+    {
+     "answer": "true",
+     "q": "The forest school has no walls or desks.",
+     "qZh": "森林学校没有墙和课桌。",
+     "why": "文中说 There are no walls, no desks, only trees。"
+    },
+    {
+     "answer": "false",
+     "q": "The children stay in the forest school for one day.",
+     "qZh": "孩子们在森林学校只待一天。",
+     "why": "文中说 one day a week, every week，每周一天。"
+    },
+    {
+     "answer": "not given",
+     "q": "The forest school is the only one in the country.",
+     "qZh": "这所森林学校是全国唯一的一所。",
+     "why": "文中没有这样说。"
+    }
+   ],
+   "sentences": [
+    {
+     "en": "In a small town in the north, there is a special school.",
+     "zh": "在北方的一个小镇上，有一所特别的学校。"
+    },
+    {
+     "en": "One day a week, the children learn in the forest.",
+     "zh": "每周有一天，孩子们在森林里上课。"
+    },
+    {
+     "en": "There are no walls, no desks, only trees.",
+     "zh": "没有墙，没有课桌，只有树。"
+    },
+    {
+     "en": "They study science by looking at real plants and animals.",
+     "zh": "他们通过观察真实的动植物来学习科学。"
+    },
+    {
+     "en": "They learn to count by counting birds and leaves.",
+     "zh": "他们通过数鸟和数叶子来学习数数。"
+    },
+    {
+     "en": "They also learn to work together.",
+     "zh": "他们还学习一起合作。"
+    },
+    {
+     "en": "If it rains, they build a small shelter.",
+     "zh": "如果下雨，他们就搭一个小棚子。"
+    },
+    {
+     "en": "The teachers say the children are healthier and happier.",
+     "zh": "老师们说，孩子们更健康、更快乐了。"
+    },
+    {
+     "en": "They breathe clean air and move all day.",
+     "zh": "他们呼吸着干净的空气，整天都在活动。"
+    },
+    {
+     "en": "The forest school is a small step towards a different future.",
+     "zh": "森林学校是走向不同未来的一小步。"
+    }
+   ],
+   "title": "The Forest School",
+   "titleZh": "森林学校",
+   "topic": "environment"
+  }
+ ],
+ "version": 1
+}
