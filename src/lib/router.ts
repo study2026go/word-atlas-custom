@@ -7,7 +7,10 @@ export type Route =
   | { page: "learn" }
   | { page: "practice" }
   | { page: "me" }
-  | { page: "about" };
+  | { page: "about" }
+  // Step 2 (word-atlas-custom): 书房. tab: 短文 / 原版书；id: 短文 id；
+  // ch: 章节号（"own" = 用户自己粘贴的书）。
+  | { page: "read"; tab?: "passages" | "book"; id?: string; ch?: string };
 
 export interface Location {
   route: Route;
@@ -23,6 +26,13 @@ function parse(hash: string): Location {
   let route: Route = { page: "today" };
   if (seg[0] === "atlas")
     route = { page: "atlas", topic: params.get("topic") || undefined, level: params.get("level") || undefined, q: params.get("q") || undefined, view: params.get("view") || undefined };
+  else if (seg[0] === "read")
+    route = {
+      page: "read",
+      tab: params.get("tab") === "book" ? "book" : "passages",
+      id: params.get("id") || undefined,
+      ch: params.get("ch") || undefined,
+    };
   else if (seg[0] === "learn") route = { page: "learn" };
   else if (seg[0] === "practice") route = { page: "practice" };
   else if (seg[0] === "me") route = { page: "me" };
@@ -38,6 +48,11 @@ export function href(route: Route, word?: string | null) {
     if (route.level) params.set("level", route.level);
     if (route.q) params.set("q", route.q);
     if (route.view) params.set("view", route.view);
+  }
+  if (route.page === "read") {
+    if (route.tab) params.set("tab", route.tab);
+    if (route.id) params.set("id", route.id);
+    if (route.ch) params.set("ch", route.ch);
   }
   if (word) params.set("w", word);
   const q = params.toString();
