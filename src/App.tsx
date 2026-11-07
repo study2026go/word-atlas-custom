@@ -170,7 +170,7 @@ function Shell({ privateAvailable }: { privateAvailable: boolean }) {
           <Logo compact />
           <p>
             一词一画，点亮雅思 · 免费开源 ·{" "}
-            <a href={REPO_URL} target="_blank" rel="noreferrer">
+            <a href={REPO_URL} target="_blank" rel="noreferrer noopener">
               GitHub
             </a>{" "}
             · <a href="#/about">关于</a>
