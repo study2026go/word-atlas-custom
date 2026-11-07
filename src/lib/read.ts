@@ -13,6 +13,11 @@ import { useSyncExternalStore } from "react";
  *   Katherine Woods translation. The original book is still under
  *   copyright in the United States until 1 Jan 2039, so its full text is
  *   deliberately not bundled. See DATA_SOURCES.md.
+ * - public/read/bible-stories.json (Step 2b) — 5 Bible stories in VERBATIM
+ *   World English Bible Updated text (public domain). No paraphrase, no
+ *   retelling, no Chinese translation of the scripture text: the English
+ *   verses are copied word for word, each with its verse reference, and
+ *   the recorded audio is the LibriVox WEB reading (Ron Altman).
  *
  * Audio: there is NO native recording for any 书房 text. All sentence
  * playback is the device's own speech synthesis, always labelled
@@ -66,6 +71,53 @@ export interface BookFile {
   chapters: BookChapter[];
 }
 
+/* ---------- Step 2b: 圣经故事 (verbatim WEB text) ---------- */
+
+/** One verse, copied verbatim from the World English Bible Updated.
+ *  `zh` is always "" for scripture: no Chinese translation is bundled,
+ *  so that no paraphrase can be mistaken for the scripture text. */
+export interface BibleVerse {
+  ref: string;
+  en: string;
+  zh: string;
+}
+
+export interface BibleAudio {
+  reader: string;
+  source: string;
+  section: string;
+  title: string;
+  duration: string;
+  url: string;
+  verified: boolean;
+  note: string;
+}
+
+export interface BibleStory {
+  id: string;
+  title: string;
+  titleZh: string;
+  /** Exact verse range, e.g. "Genesis 6:5-22; 7:1-24; 8:1-22". */
+  ref: string;
+  refNoteZh: string;
+  source: string;
+  sourceNote: string;
+  audio: BibleAudio;
+  minutes: number;
+  words: number;
+  verses: BibleVerse[];
+  keywords: string[];
+}
+
+export interface BibleFile {
+  version: number;
+  kind: string;
+  title: string;
+  titleZh: string;
+  note: string;
+  stories: BibleStory[];
+}
+
 /** BASE_URL is only read inside the loaders, never at module load, so the
  *  pure helpers in this file stay usable under plain node (tests). */
 const readUrl = (p: string) => `${import.meta.env.BASE_URL.replace(/\/$/, "")}/read/${p}`;
@@ -83,6 +135,21 @@ export function loadPassages(): Promise<PassageFile> {
         return f;
       });
   return passagesPromise;
+}
+
+let biblePromise: Promise<BibleFile> | null = null;
+export function loadBibleStories(): Promise<BibleFile> {
+  if (!biblePromise)
+    biblePromise = fetch(readUrl("bible-stories.json"))
+      .then((r) => {
+        if (!r.ok) throw new Error(`圣经故事加载失败（${r.status}）`);
+        return r.json() as Promise<BibleFile>;
+      })
+      .then((f) => {
+        if (!Array.isArray(f.stories)) throw new Error("圣经故事数据格式不对。");
+        return f;
+      });
+  return biblePromise;
 }
 
 let bookPromise: Promise<BookFile> | null = null;
@@ -170,6 +237,10 @@ export interface ReadProgress {
   bookListened: Record<string, number>;
   /** The user's own pasted book (their own legally obtained text). */
   ownBook: { title: string; text: string } | null;
+  /** Finished Bible stories (story ids, Step 2b). */
+  bibleDone: string[];
+  /** Last verse index listened to, per Bible story ("bible:noah" -> index). */
+  bibleListened: Record<string, number>;
   prefs: ReadPrefs;
 }
 
@@ -179,7 +250,7 @@ const OWN_BOOK_MAX = 200_000;
 const defaultPrefs: ReadPrefs = { rate: 1, bilingual: true, listenFirst: true, narration: "en", font: 1 };
 
 export function emptyReadProgress(): ReadProgress {
-  return { version: 1, passages: {}, bookDone: [], bookListened: {}, ownBook: null, prefs: { ...defaultPrefs } };
+  return { version: 1, passages: {}, bookDone: [], bookListened: {}, ownBook: null, bibleDone: [], bibleListened: {}, prefs: { ...defaultPrefs } };
 }
 
 const isObj = (v: unknown): v is Record<string, unknown> => !!v && typeof v === "object" && !Array.isArray(v);
@@ -202,6 +273,11 @@ export function sanitizeReadProgress(v: unknown): ReadProgress {
   if (isObj(v.bookListened))
     for (const [k, n] of Object.entries(v.bookListened))
       if (/^ch:\d+$/.test(k) && num(n, 0, 10000)) out.bookListened[k] = n as number;
+  if (Array.isArray(v.bibleDone))
+    out.bibleDone = v.bibleDone.filter((n): n is string => typeof n === "string" && /^[a-z-]+$/.test(n)).slice(0, 100);
+  if (isObj(v.bibleListened))
+    for (const [k, n] of Object.entries(v.bibleListened))
+      if (/^bible:[a-z-]+$/.test(k) && num(n, 0, 10000)) out.bibleListened[k] = n as number;
   if (isObj(v.ownBook) && typeof v.ownBook.title === "string" && typeof v.ownBook.text === "string")
     out.ownBook = { title: v.ownBook.title.slice(0, 100), text: v.ownBook.text.slice(0, OWN_BOOK_MAX) };
   if (isObj(v.prefs)) {
