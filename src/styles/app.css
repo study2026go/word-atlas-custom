@@ -4194,3 +4194,57 @@ a:hover .mark-needle,
   gap: 14px;
   margin-top: 20px;
 }
+
+/* ---------- Step 2: 书房 (Study Room) ---------- */
+.read-tabs { margin: 18px 0 22px; }
+.read-note { max-width: 720px; color: var(--muted, #8b8fa3); line-height: 1.7; }
+.read-list { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 12px; }
+.read-card { width: 100%; display: flex; align-items: center; gap: 14px; text-align: left; padding: 14px 16px; border-radius: 16px; border: 1px solid var(--line, rgba(255, 255, 255, 0.12)); background: var(--panel, rgba(255, 255, 255, 0.04)); color: inherit; cursor: pointer; }
+.read-card:hover { border-color: var(--accent, #e07856); }
+.read-card-level { flex: none; min-width: 54px; text-align: center; font-size: 12px; font-weight: 700; padding: 4px 8px; border-radius: 999px; background: rgba(224, 120, 86, 0.16); color: var(--accent, #e07856); }
+.read-card-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.read-card-body b { font-size: 16px; }
+.read-card-body small { color: var(--muted, #8b8fa3); }
+.read-card-meta { flex: none; font-size: 13px; color: var(--muted, #8b8fa3); }
+.read-head { margin: 20px 0 8px; }
+.read-head h2 { font-size: 28px; margin: 4px 0; }
+.read-title-zh { color: var(--muted, #8b8fa3); }
+.read-done { color: #7fb069; font-weight: 600; }
+.read-toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 16px 0 8px; }
+.read-audio-note { font-size: 13px; color: var(--muted, #8b8fa3); margin: 4px 0 12px; }
+.read-sentences { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.read-sent { display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-radius: 14px; border: 1px solid var(--line, rgba(255, 255, 255, 0.1)); background: var(--panel, rgba(255, 255, 255, 0.03)); }
+.read-sent.is-playing { border-color: var(--accent, #e07856); }
+.read-sent-no { flex: none; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; background: rgba(255, 255, 255, 0.08); }
+.read-sent-body { flex: 1; min-width: 0; line-height: 1.8; }
+.read-sent-body p { margin: 0; }
+.read-zh { color: var(--muted, #8b8fa3); font-size: 0.92em; }
+.read-hidden { color: var(--muted, #8b8fa3); display: flex; align-items: center; gap: 6px; }
+.read-sent-actions { flex: none; display: flex; gap: 2px; align-items: center; }
+.read-slow { font-size: 12px; font-weight: 700; }
+.read-kws { margin: 22px 0; }
+.read-kws > div { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.read-kw { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 1px; padding: 6px 10px; border-radius: 10px; border: 1px solid var(--line, rgba(255, 255, 255, 0.12)); background: transparent; color: inherit; cursor: pointer; }
+.read-kw small { color: var(--muted, #8b8fa3); font-size: 12px; }
+.read-quiz, .read-practice { margin-top: 26px; padding: 18px; }
+.read-q { margin: 16px 0; }
+.read-q .segmented { margin-top: 8px; }
+.read-correct { color: #7fb069; font-weight: 600; line-height: 1.7; }
+.read-wrong { color: #d64545; font-weight: 600; line-height: 1.7; }
+.read-score { font-weight: 700; margin-top: 10px; }
+.read-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; }
+.read-book-intro { padding: 20px; margin-bottom: 18px; }
+.read-book-intro h3 { font-size: 22px; margin: 0 0 4px; }
+.read-links { font-size: 14px; line-height: 1.7; }
+.read-own { padding: 20px; margin-top: 24px; }
+.read-own .field { display: flex; flex-direction: column; gap: 6px; margin: 12px 0; }
+.read-input { width: 100%; box-sizing: border-box; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line, rgba(255, 255, 255, 0.16)); background: transparent; color: inherit; font: inherit; }
+.read-nav { display: flex; justify-content: space-between; gap: 8px; margin: 26px 0 8px; }
+.read-listen { margin-top: 14px; }
+.read-opts { display: grid; gap: 8px; margin: 12px 0; }
+.read-opt { text-align: left; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--line, rgba(255, 255, 255, 0.12)); background: transparent; color: inherit; cursor: pointer; line-height: 1.6; }
+.read-opt.is-right { border-color: #7fb069; background: rgba(127, 176, 105, 0.12); }
+.read-opt.is-wrong { border-color: #d64545; background: rgba(214, 69, 69, 0.1); }
+.read-hint { color: var(--muted, #8b8fa3); }
+.segmented-sm button { padding: 6px 10px; font-size: 13px; }
+.btn-sm { padding: 6px 10px; font-size: 13px; }
