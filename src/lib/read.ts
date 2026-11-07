@@ -122,6 +122,99 @@ export interface BibleFile {
  *  pure helpers in this file stay usable under plain node (tests). */
 const readUrl = (p: string) => `${import.meta.env.BASE_URL.replace(/\/$/, "")}/read/${p}`;
 
+
+/* ---------- F5 (audit fix): validate 书房 data files ---------- */
+
+/** Only archive.org download URLs are allowed for recorded audio. */
+const ARCHIVE_AUDIO_URL = /^https:\/\/(www\.)?archive\.org\/download\//;
+const isStr = (v: unknown): v is string => typeof v === "string" && v.length > 0;
+const isSentence = (v: unknown): v is ReadSentence =>
+  isObj(v) && isStr(v.en) && typeof v.zh === "string";
+const isQuestion = (v: unknown): v is PassageQuestion =>
+  isObj(v) &&
+  isStr(v.q) &&
+  typeof v.qZh === "string" &&
+  (v.answer === "true" || v.answer === "false" || v.answer === "not given") &&
+  typeof v.why === "string";
+
+export function validatePassages(f: unknown): PassageFile {
+  if (!isObj(f) || !Array.isArray(f.passages)) throw new Error("短文数据格式不对。");
+  for (const p of f.passages) {
+    if (
+      !isObj(p) ||
+      !isStr(p.id) ||
+      !isStr(p.level) ||
+      !isStr(p.title) ||
+      typeof p.titleZh !== "string" ||
+      typeof p.topic !== "string" ||
+      !num(p.minutes, 0) ||
+      !Array.isArray(p.sentences) ||
+      !p.sentences.every(isSentence) ||
+      !Array.isArray(p.keywords) ||
+      !p.keywords.every((k) => typeof k === "string") ||
+      !Array.isArray(p.questions) ||
+      !p.questions.every(isQuestion)
+    )
+      throw new Error("短文数据格式不对。");
+  }
+  return f as unknown as PassageFile;
+}
+
+export function validateBible(f: unknown): BibleFile {
+  if (!isObj(f) || !Array.isArray(f.stories)) throw new Error("圣经故事数据格式不对。");
+  for (const st of f.stories) {
+    if (
+      !isObj(st) ||
+      !isStr(st.id) ||
+      !isStr(st.title) ||
+      typeof st.titleZh !== "string" ||
+      !isStr(st.ref) ||
+      typeof st.refNoteZh !== "string" ||
+      typeof st.source !== "string" ||
+      typeof st.sourceNote !== "string" ||
+      !num(st.minutes, 0) ||
+      !num(st.words, 0) ||
+      !Array.isArray(st.verses) ||
+      !st.verses.every(
+        (v) => isObj(v) && isStr(v.ref) && isStr(v.en) && typeof v.zh === "string",
+      ) ||
+      !Array.isArray(st.keywords) ||
+      !st.keywords.every((k) => typeof k === "string") ||
+      !isObj(st.audio) ||
+      typeof st.audio.reader !== "string" ||
+      typeof st.audio.source !== "string" ||
+      typeof st.audio.section !== "string" ||
+      typeof st.audio.title !== "string" ||
+      typeof st.audio.duration !== "string" ||
+      // F5: recorded audio may only come from archive.org downloads.
+      typeof st.audio.url !== "string" ||
+      !ARCHIVE_AUDIO_URL.test(st.audio.url) ||
+      typeof st.audio.verified !== "boolean" ||
+      typeof st.audio.note !== "string"
+    )
+      throw new Error("圣经故事数据格式不对。");
+  }
+  return f as unknown as BibleFile;
+}
+
+export function validateBook(f: unknown): BookFile {
+  if (!isObj(f) || !Array.isArray(f.chapters)) throw new Error("小王子数据格式不对。");
+  for (const c of f.chapters) {
+    if (
+      !isObj(c) ||
+      !num(c.n, 1) ||
+      !isStr(c.title) ||
+      typeof c.titleZh !== "string" ||
+      !Array.isArray(c.keywords) ||
+      !c.keywords.every((k) => typeof k === "string") ||
+      !Array.isArray(c.sentences) ||
+      !c.sentences.every(isSentence)
+    )
+      throw new Error("小王子数据格式不对。");
+  }
+  return f as unknown as BookFile;
+}
+
 let passagesPromise: Promise<PassageFile> | null = null;
 export function loadPassages(): Promise<PassageFile> {
   if (!passagesPromise)
@@ -130,10 +223,7 @@ export function loadPassages(): Promise<PassageFile> {
         if (!r.ok) throw new Error(`短文加载失败（${r.status}）`);
         return r.json() as Promise<PassageFile>;
       })
-      .then((f) => {
-        if (!Array.isArray(f.passages)) throw new Error("短文数据格式不对。");
-        return f;
-      });
+      .then((f) => validatePassages(f));
   return passagesPromise;
 }
 
@@ -145,10 +235,7 @@ export function loadBibleStories(): Promise<BibleFile> {
         if (!r.ok) throw new Error(`圣经故事加载失败（${r.status}）`);
         return r.json() as Promise<BibleFile>;
       })
-      .then((f) => {
-        if (!Array.isArray(f.stories)) throw new Error("圣经故事数据格式不对。");
-        return f;
-      });
+      .then((f) => validateBible(f));
   return biblePromise;
 }
 
@@ -160,10 +247,7 @@ export function loadBook(): Promise<BookFile> {
         if (!r.ok) throw new Error(`小王子加载失败（${r.status}）`);
         return r.json() as Promise<BookFile>;
       })
-      .then((f) => {
-        if (!Array.isArray(f.chapters)) throw new Error("小王子数据格式不对。");
-        return f;
-      });
+      .then((f) => validateBook(f));
   return bookPromise;
 }
 
