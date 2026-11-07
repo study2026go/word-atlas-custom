@@ -1,5 +1,8 @@
 /* Word Atlas offline cache: app shell network-first, everything else cache-first. */
-const VERSION = "atlas-v1";
+/* F6 (audit fix): bumped from "atlas-v1" so the stale cache-first
+   media cache is cleared after this deploy. Bump on every release
+   that changes behaviour. */
+const VERSION = "atlas-v2";
 const SHELL = `${VERSION}-shell`;
 const MEDIA = `${VERSION}-media`;
 
