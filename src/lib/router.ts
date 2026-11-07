@@ -10,7 +10,8 @@ export type Route =
   | { page: "about" }
   // Step 2 (word-atlas-custom): 书房. tab: 短文 / 原版书；id: 短文 id；
   // ch: 章节号（"own" = 用户自己粘贴的书）。
-  | { page: "read"; tab?: "passages" | "book"; id?: string; ch?: string };
+  // Step 2b: tab "bible" = 圣经故事；id: 圣经故事 id。
+  | { page: "read"; tab?: "passages" | "book" | "bible"; id?: string; ch?: string };
 
 export interface Location {
   route: Route;
@@ -29,7 +30,7 @@ function parse(hash: string): Location {
   else if (seg[0] === "read")
     route = {
       page: "read",
-      tab: params.get("tab") === "book" ? "book" : "passages",
+      tab: params.get("tab") === "book" ? "book" : params.get("tab") === "bible" ? "bible" : "passages",
       id: params.get("id") || undefined,
       ch: params.get("ch") || undefined,
     };
