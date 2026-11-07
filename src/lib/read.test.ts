@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { normalizeDictation, sanitizeReadProgress, scoreTFNG, splitSentences } from "./read";
+import { normalizeDictation, sanitizeReadProgress, scoreTFNG, splitSentences, validateBible, validateBook, validatePassages } from "./read";
 
 test("splits pasted text into sentences", () => {
   assert.deepEqual(splitSentences("Hello world. How are you?\nI am fine!"), ["Hello world.", "How are you?", "I am fine!"]);
@@ -66,4 +66,33 @@ test("rejects other versions and caps a huge pasted book", () => {
   const p = sanitizeReadProgress({ version: 1, ownBook: { title: "x".repeat(500), text: "a".repeat(300000) } });
   assert.equal(p.ownBook?.title.length, 100);
   assert.equal(p.ownBook?.text.length, 200000);
+});
+
+// F5 (audit fix): data-file loaders reject bad shapes and non-allow-listed audio URLs.
+test("F5 rejects bad 书房 data and non-archive.org audio URLs", () => {
+  assert.throws(() => validatePassages({ passages: "nope" }), /短文数据格式不对/);
+  assert.throws(
+    () =>
+      validatePassages({
+        passages: [{ id: "p1", level: "A1", title: "T", titleZh: "", topic: "x", minutes: 2, sentences: [{ en: "Hi.", zh: "" }], keywords: ["a"], questions: [{ q: "x", qZh: "", answer: "maybe", why: "" }] }],
+      }),
+    /短文数据格式不对/,
+  );
+  const goodBible = {
+    stories: [
+      {
+        id: "noah", title: "Noah", titleZh: "", ref: "Genesis 6:5", refNoteZh: "", source: "WEB", sourceNote: "",
+        audio: { reader: "R", source: "LibriVox", section: "S", title: "T", duration: "1:00", url: "https://www.archive.org/download/x/y.mp3", verified: true, note: "" },
+        minutes: 1, words: 10, verses: [{ ref: "6:5", en: "God saw.", zh: "" }], keywords: ["a"],
+      },
+    ],
+  };
+  assert.equal(validateBible(goodBible).stories.length, 1);
+  const badUrl = JSON.parse(JSON.stringify(goodBible));
+  badUrl.stories[0].audio.url = "https://evil.example.com/x.mp3";
+  assert.throws(() => validateBible(badUrl), /圣经故事数据格式不对/);
+  const badVerse = JSON.parse(JSON.stringify(goodBible));
+  badVerse.stories[0].verses = [{ ref: "6:5", en: 42, zh: "" }];
+  assert.throws(() => validateBible(badVerse), /圣经故事数据格式不对/);
+  assert.throws(() => validateBook({ chapters: [{ n: 0, title: "T", titleZh: "", keywords: [], sentences: [] }] }), /小王子数据格式不对/);
 });
