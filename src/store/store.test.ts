@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { sanitizeProgress, sanitizeSettings } from "./store";
+import { sanitizeProgress, sanitizeSettings, defaultSettings } from "./store";
+import { nextNew } from "./session";
 
 const card = { due: 1, s: 2, d: 5, el: 0, sd: 1, ls: 0, reps: 1, lapses: 0, st: 2, seen: 1 };
 
@@ -28,4 +29,37 @@ test("rejects other versions and unknown settings", () => {
   assert.equal(s.dailyNew, 10);
   assert.equal(s.theme, "dark");
   assert.equal(s.retention, 0.9);
+});
+
+test("by-topic route: keeps valid route settings, drops invalid ones", () => {
+  const s = sanitizeSettings({ routeMode: "topic", routeTopic: "education", listenFirst: false });
+  assert.equal(s.routeMode, "topic");
+  assert.equal(s.routeTopic, "education");
+  assert.equal(s.listenFirst, false);
+  const bad = sanitizeSettings({ routeMode: "by-topic", routeTopic: "Education!", listenFirst: "yes" });
+  assert.equal(bad.routeMode, "level");
+  assert.equal(bad.routeTopic, "education");
+  assert.equal(bad.listenFirst, true);
+});
+
+test("by-topic route: new words come only from the chosen topic", () => {
+  const atlas = {
+    topics: [
+      ["education", "教育"],
+      ["daily", "生活"],
+    ],
+    words: [
+      { id: "a", cefr: 0, topic: 0 },
+      { id: "b", cefr: 2, topic: 1 },
+      { id: "c", cefr: 0, topic: 0 },
+      { id: "d", cefr: 0, topic: 1 },
+    ],
+  } as never;
+  const p = { cards: { a: {} } } as never;
+  const topic = nextNew(atlas, p, { ...defaultSettings, routeMode: "topic", routeTopic: "education" }, 10);
+  assert.deepEqual(topic, ["c"]);
+  const level = nextNew(atlas, p, { ...defaultSettings, routeMode: "level", startLevel: 0 }, 10);
+  assert.deepEqual(level, ["b", "c", "d"]);
+  const bad = nextNew(atlas, p, { ...defaultSettings, routeMode: "topic", routeTopic: "nope" }, 10);
+  assert.deepEqual(bad, level);
 });
