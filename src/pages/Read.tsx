@@ -2,18 +2,19 @@ import { ArrowLeft, ArrowRight, Check, ChevronLeft, ChevronRight, Ear, Eye, EyeO
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useAtlas } from "../atlas/context";
 import { go, openWord, useLocation } from "../lib/router";
-import { loadBook, loadPassages, normalizeDictation, scoreTFNG, setReadPrefs, splitSentences, updateRead, useReadProgress, type BookChapter, type BookFile, type Passage, type PassageFile, type ReadPrefs } from "../lib/read";
+import { loadBibleStories, loadBook, loadPassages, normalizeDictation, scoreTFNG, setReadPrefs, splitSentences, updateRead, useReadProgress, type BibleFile, type BibleStory, type BookChapter, type BookFile, type Passage, type PassageFile, type ReadPrefs } from "../lib/read";
 import { speakSentence, stopReading } from "../lib/read-audio";
 import { store, useStore } from "../store/store";
 import { shuffle } from "../lib/text";
 
-type Tab = "passages" | "book";
+type Tab = "passages" | "book" | "bible";
 
 export function Read() {
   const { route } = useLocation();
-  const tab: Tab = route.page === "read" && route.tab === "book" ? "book" : "passages";
+  const tab: Tab = route.page === "read" && route.tab === "book" ? "book" : route.page === "read" && route.tab === "bible" ? "bible" : "passages";
   const [passages, setPassages] = useState<PassageFile | null>(null);
   const [book, setBook] = useState<BookFile | null>(null);
+  const [bible, setBible] = useState<BibleFile | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -24,6 +25,10 @@ export function Read() {
     );
     loadBook().then(
       (f) => alive && setBook(f),
+      (e: Error) => alive && setError(e.message),
+    );
+    loadBibleStories().then(
+      (f) => alive && setBible(f),
       (e: Error) => alive && setError(e.message),
     );
     return () => {
@@ -45,7 +50,7 @@ export function Read() {
         </button>
       </div>
     );
-  if (!passages || !book)
+  if (!passages || !book || !bible)
     return (
       <div className="page read">
         <header className="page-head">
@@ -63,7 +68,7 @@ export function Read() {
       <header className="page-head">
         <p className="eyebrow">书房</p>
         <h1 className="display">书房</h1>
-        <p className="muted">读短文、读小王子，先听再看。进度只存在这台设备的浏览器里。</p>
+        <p className="muted">读短文、读小王子、读圣经故事，先听再看。进度只存在这台设备的浏览器里。</p>
       </header>
 
       <div className="segmented read-tabs" role="tablist" aria-label="书房分类">
@@ -73,6 +78,9 @@ export function Read() {
         <button className={tab === "book" ? "is-on" : ""} onClick={() => go({ page: "read", tab: "book" })}>
           原版书
         </button>
+        <button className={tab === "bible" ? "is-on" : ""} onClick={() => go({ page: "read", tab: "bible" })}>
+          圣经故事
+        </button>
       </div>
 
       {tab === "passages" ? (
@@ -80,6 +88,12 @@ export function Read() {
           <PassageReader passage={passages.passages.find((p) => p.id === id)} />
         ) : (
           <PassageList passages={passages.passages} />
+        )
+      ) : tab === "bible" ? (
+        id ? (
+          <BibleReader story={bible.stories.find((st) => st.id === id)} />
+        ) : (
+          <BibleList bible={bible} />
         )
       ) : ch ? (
         <ChapterReader book={book} ch={ch} />
@@ -139,6 +153,7 @@ function SentenceRow({
   onReveal,
   onPlay,
   onSlow,
+  label,
 }: {
   i: number;
   en: string;
@@ -150,10 +165,12 @@ function SentenceRow({
   onReveal: () => void;
   onPlay: () => void;
   onSlow: () => void;
+  /** Optional label instead of the 1-based number (e.g. a verse ref "6:5"). */
+  label?: string;
 }) {
   return (
     <li className={`read-sent ${revealed ? "is-open" : ""} ${playing ? "is-playing" : ""}`}>
-      <span className="read-sent-no">{i + 1}</span>
+      <span className={label ? "read-sent-ref" : "read-sent-no"}>{label ?? i + 1}</span>
       <div className="read-sent-body" style={{ fontSize: ["15px", "17px", "20px"][font] }}>
         {revealed ? (
           <>
@@ -801,6 +818,169 @@ function Dictation({
         </div>
       )}
     </div>
+  );
+}
+
+
+/* ---------- 圣经故事 (Step 2b: verbatim WEB text) ---------- */
+
+function BibleList({ bible }: { bible: BibleFile }) {
+  const done = useReadProgress((s) => s.bibleDone);
+  return (
+    <section>
+      <p className="read-note">
+        <b>{bible.stories.length} 个圣经故事</b>，英文经文是 World English Bible Updated（WEB）原文，
+        一字不改，每节都标了出处，方便对照原文核对。本站不提供经文的中文翻译——
+        任何中文意译都可能改了意思，所以中文只出现在标题和这段说明里，不混进经文。
+        录音是 LibriVox 的真人录音（Ron Altman 读 WEB），整段多章音频，不是按节切分的。
+      </p>
+      <p className="muted">
+        已读完 {bible.stories.filter((st) => done.includes(st.id)).length} / {bible.stories.length} 个
+      </p>
+      <ul className="read-list">
+        {bible.stories.map((st) => (
+          <li key={st.id}>
+            <button className="read-card" onClick={() => go({ page: "read", tab: "bible", id: st.id })}>
+              <span className="read-card-level">{done.includes(st.id) ? "✓" : "圣经"}</span>
+              <span className="read-card-body">
+                <b lang="en">{st.title}</b>
+                <small>
+                  {st.titleZh} · {st.ref}
+                </small>
+              </span>
+              <span className="read-card-meta">
+                {st.verses.length} 节 · 约 {st.minutes} 分钟 · {done.includes(st.id) ? "已读完" : "未读"}
+              </span>
+            </button>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function BibleReader({ story }: { story: BibleStory | undefined }) {
+  const prefs = useReadProgress((s) => s.prefs);
+  const done = useReadProgress((s) => s.bibleDone);
+  const accent = useStore((s) => s.settings.accent);
+  const isDone = story ? done.includes(story.id) : false;
+
+  const player = useSentencePlayer(story?.verses ?? [], {
+    rate: prefs.rate,
+    narration: "en",
+    accent,
+    onHeard: (i) =>
+      story &&
+      updateRead((p) => ({
+        ...p,
+        bibleListened: { ...p.bibleListened, [`bible:${story.id}`]: Math.max(p.bibleListened[`bible:${story.id}`] ?? -1, i) },
+      })),
+  });
+
+  if (!story)
+    return (
+      <section>
+        <p className="warn-text">找不到这个圣经故事。</p>
+        <button className="btn btn-ghost" onClick={() => go({ page: "read", tab: "bible" })}>
+          回圣经故事列表
+        </button>
+      </section>
+    );
+
+  const toggleDone = () =>
+    updateRead((p) => ({ ...p, bibleDone: isDone ? p.bibleDone.filter((x) => x !== story.id) : [...p.bibleDone, story.id] }));
+
+  return (
+    <article>
+      <button className="btn btn-ghost" onClick={() => go({ page: "read", tab: "bible" })}>
+        <ArrowLeft size={17} /> 回圣经故事列表
+      </button>
+      <header className="read-head">
+        <p className="eyebrow">
+          圣经故事 · {story.verses.length} 节 · 约 {story.minutes} 分钟 · WEB 原文
+        </p>
+        <h2 lang="en">{story.title}</h2>
+        <p className="read-title-zh">
+          {story.titleZh} · {story.ref}
+        </p>
+        <p className="muted">{story.refNoteZh}</p>
+        <p className="muted">
+          出处：{story.source}。{story.sourceNote}
+        </p>
+        {isDone && (
+          <p className="read-done">
+            <Check size={16} /> 已读完
+          </p>
+        )}
+      </header>
+
+      <section className="panel read-audio-box">
+        <h3 className="eyebrow">真人录音 · LibriVox</h3>
+        <p className="muted">
+          {story.audio.source}，{story.audio.reader} 朗读 · {story.audio.title}（{story.audio.duration}）。
+          {story.audio.note}
+        </p>
+        {/* Chapter-level recording: one ~1-hour file covering several chapters. */}
+        {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+        <audio className="read-audio" controls preload="none" src={story.audio.url} />
+        <p className="read-links">
+          <a href="https://librivox.org/bible-web-complete-by-world-english-bible/" target="_blank" rel="noreferrer">
+            LibriVox 完整录音目录
+          </a>
+        </p>
+      </section>
+
+      <div className="read-toolbar">
+        <button className="btn btn-primary" onClick={() => void player.playAll(0)} disabled={player.playing >= 0}>
+          <Headphones size={17} /> 逐节听（设备朗读）
+        </button>
+        {player.playing >= 0 && (
+          <button className="btn btn-ghost" onClick={player.stop}>
+            <X size={17} /> 停
+          </button>
+        )}
+        <RatePicker prefs={prefs} />
+        <button className="btn btn-ghost" onClick={() => setReadPrefs({ listenFirst: !prefs.listenFirst })} aria-pressed={prefs.listenFirst}>
+          {prefs.listenFirst ? <EyeOff size={17} /> : <Eye size={17} />} {prefs.listenFirst ? "先听模式：开" : "先听模式：关"}
+        </button>
+        <button className="btn btn-ghost" onClick={() => setReadPrefs({ font: ((prefs.font + 1) % 3) as 0 | 1 | 2 })}>
+          字号 {["小", "中", "大"][prefs.font]}
+        </button>
+      </div>
+      <p className="read-audio-note">
+        逐节朗读是设备自带的声音（设备朗读），不是真人录音；上面那段 LibriVox 音频才是真人录音。
+        每节都标了出处，先听一句，猜意思，再点显示。
+      </p>
+
+      <ol className="read-sentences">
+        {story.verses.map((v, i) => (
+          <SentenceRow
+            key={v.ref}
+            i={i}
+            label={v.ref.split(" ").pop()}
+            en={v.en}
+            zh=""
+            bilingual={false}
+            font={prefs.font}
+            revealed={!prefs.listenFirst || player.revealed.has(i)}
+            playing={player.playing === i}
+            onReveal={() => player.reveal(i)}
+            onPlay={() => void player.playOne(i)}
+            onSlow={() => void player.playOne(i, true)}
+          />
+        ))}
+      </ol>
+      <div className="read-actions">
+        <button className="btn btn-ghost" onClick={player.revealAll}>
+          全部显示
+        </button>
+        <button className={`btn ${isDone ? "btn-ghost" : "btn-primary"}`} onClick={toggleDone}>
+          <Check size={17} /> {isDone ? "已读完，再读一遍" : "读完了"}
+        </button>
+      </div>
+
+      <KeywordChips keywords={story.keywords} />
+    </article>
   );
 }
 
