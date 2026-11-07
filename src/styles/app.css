@@ -4248,3 +4248,9 @@ a:hover .mark-needle,
 .read-hint { color: var(--muted, #8b8fa3); }
 .segmented-sm button { padding: 6px 10px; font-size: 13px; }
 .btn-sm { padding: 6px 10px; font-size: 13px; }
+
+/* ---------- Step 2b: 圣经故事 ---------- */
+.read-sent-ref { flex: none; min-width: 44px; height: 26px; padding: 0 6px; border-radius: 999px; display: grid; place-items: center; font-size: 12px; font-weight: 700; background: rgba(255, 255, 255, 0.08); }
+.read-audio-box { padding: 18px; margin: 16px 0; }
+.read-audio-box h3 { margin: 0 0 6px; }
+.read-audio { width: 100%; margin: 10px 0 4px; }
