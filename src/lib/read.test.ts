@@ -49,6 +49,18 @@ test("sanitizes 书房 progress and drops malformed records", () => {
   assert.equal(p.prefs.font, 1);
 });
 
+test("sanitizes Bible story progress (Step 2b)", () => {
+  const p = sanitizeReadProgress({
+    version: 1,
+    bibleDone: ["noah", "jonah", "bad id!", 7],
+    bibleListened: { "bible:noah": 12, "bible:jonah": 3, nope: 1, "bible:x": -2, "ch:3": 5 },
+    bookDone: [1],
+  });
+  assert.deepEqual(p.bibleDone, ["noah", "jonah"]);
+  assert.deepEqual(p.bibleListened, { "bible:noah": 12, "bible:jonah": 3 });
+  assert.deepEqual(p.bookDone, [1]);
+});
+
 test("rejects other versions and caps a huge pasted book", () => {
   assert.deepEqual(sanitizeReadProgress({ version: 2 }).passages, {});
   const p = sanitizeReadProgress({ version: 1, ownBook: { title: "x".repeat(500), text: "a".repeat(300000) } });
