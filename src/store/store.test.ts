@@ -63,3 +63,21 @@ test("by-topic route: new words come only from the chosen topic", () => {
   const bad = nextNew(atlas, p, { ...defaultSettings, routeMode: "topic", routeTopic: "nope" }, 10);
   assert.deepEqual(bad, level);
 });
+
+// F4 (audit fix): a session with a bogus step is dropped entirely.
+test("F4 drops a session whose steps fail validation", () => {
+  const good = {
+    version: 2, cards: {}, bookmarks: [], days: {}, typing: [], mistakes: [],
+    session: { id: "s1", started: 1, steps: [{ id: "a", kind: "intro" }, { id: "b", kind: "meaning", options: ["a", "b"] }], index: 0, graded: {}, newIds: ["a"], reviewIds: [] },
+  };
+  assert.notEqual(sanitizeProgress(good, "word-atlas-open").session, null);
+  const badKind = JSON.parse(JSON.stringify(good));
+  badKind.session.steps[1].kind = "explode";
+  assert.equal(sanitizeProgress(badKind, "word-atlas-open").session, null);
+  const badIndex = JSON.parse(JSON.stringify(good));
+  badIndex.session.index = 2;
+  assert.equal(sanitizeProgress(badIndex, "word-atlas-open").session, null);
+  const badOptions = JSON.parse(JSON.stringify(good));
+  badOptions.session.steps[1].options = [1, 2];
+  assert.equal(sanitizeProgress(badOptions, "word-atlas-open").session, null);
+});
