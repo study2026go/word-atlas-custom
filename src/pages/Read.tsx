@@ -470,11 +470,11 @@ function BookHome({ book }: { book: BookFile }) {
         </p>
         <p className="read-links">
           原著借阅：
-          <a href="https://openlibrary.org/works/OL10263W/The_Little_Prince" target="_blank" rel="noreferrer">
+          <a href="https://openlibrary.org/works/OL10263W/The_Little_Prince" target="_blank" rel="noreferrer noopener">
             Open Library 借阅
           </a>{" "}
           ·{" "}
-          <a href="http://gutenberg.net.au/ebooks03/0300771h.html" target="_blank" rel="noreferrer">
+          <a href="https://gutenberg.net.au/ebooks03/0300771h.html" target="_blank" rel="noreferrer noopener">
             法语原文（Project Gutenberg Australia，仅限公版地区）
           </a>
         </p>
@@ -924,7 +924,7 @@ function BibleReader({ story }: { story: BibleStory | undefined }) {
         {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
         <audio className="read-audio" controls preload="none" src={story.audio.url} />
         <p className="read-links">
-          <a href="https://librivox.org/bible-web-complete-by-world-english-bible/" target="_blank" rel="noreferrer">
+          <a href="https://librivox.org/bible-web-complete-by-world-english-bible/" target="_blank" rel="noreferrer noopener">
             LibriVox 完整录音目录
           </a>
         </p>
