@@ -161,8 +161,26 @@ export function sanitizeProgress(v: unknown, datasetId: string): Progress {
       )
       .slice(-500);
   const s = v.session;
-  if (isObj(s) && typeof s.id === "string" && Array.isArray(s.steps) && num(s.index, 0) && isObj(s.graded))
-    out.session = s as unknown as ActiveSession;
+  if (isObj(s) && typeof s.id === "string" && Array.isArray(s.steps) && num(s.index, 0) && isObj(s.graded)) {
+    // F4 (audit fix): the step contents were never checked, so a bogus
+    // step (bad kind / unknown id) could crash the Learn page on every
+    // visit until localStorage was cleared. Validate every step and drop
+    // the whole session if any step fails validation.
+    const validKinds = ["intro", "meaning", "picture", "listen", "spell"];
+    const stepsOk =
+      s.steps.length > 0 &&
+      s.steps.every(
+        (st) =>
+          isObj(st) &&
+          typeof st.id === "string" &&
+          st.id.length > 0 &&
+          validKinds.includes(st.kind as string) &&
+          (st.options === undefined ||
+            (Array.isArray(st.options) && st.options.every((o) => typeof o === "string"))) &&
+          (st.retry === undefined || typeof st.retry === "boolean"),
+      );
+    if (stepsOk && (s.index as number) < s.steps.length) out.session = s as unknown as ActiveSession;
+  }
   return out;
 }
 
