@@ -38,7 +38,18 @@ function parse(hash: string): Location {
   else if (seg[0] === "practice") route = { page: "practice" };
   else if (seg[0] === "me") route = { page: "me" };
   else if (seg[0] === "about") route = { page: "about" };
-  else if (seg[0] === "w" && seg[1]) return { route: { page: "atlas" }, word: decodeURIComponent(seg[1]) };
+  else if (seg[0] === "w" && seg[1]) {
+    // F3 (audit fix): a malformed hash (#/w/%…) makes decodeURIComponent
+    // throw URIError and white-screen the app (no try/catch anywhere).
+    // Fall back to the raw segment instead of crashing.
+    let word: string;
+    try {
+      word = decodeURIComponent(seg[1]);
+    } catch {
+      word = seg[1];
+    }
+    return { route: { page: "atlas" }, word };
+  }
   return { route, word };
 }
 
