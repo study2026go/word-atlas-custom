@@ -18,10 +18,10 @@ export function About() {
           </p>
           <p className="lede">它免费、开源、无需注册。代码用 MIT，词库用 CC BY 4.0，谁都可以拿去用。</p>
           <div className="about-actions">
-            <a className="btn btn-primary" href={REPO_URL} target="_blank" rel="noreferrer">
+            <a className="btn btn-primary" href={REPO_URL} target="_blank" rel="noreferrer noopener">
               <Github size={18} /> 在 GitHub 上查看
             </a>
-            <a className="btn btn-ghost" href={`${REPO_URL}/tree/main/data`} target="_blank" rel="noreferrer">
+            <a className="btn btn-ghost" href={`${REPO_URL}/tree/main/data`} target="_blank" rel="noreferrer noopener">
               <Database size={18} /> 下载词库 JSON / CSV
             </a>
           </div>
@@ -100,7 +100,7 @@ export function About() {
           <p className="muted">
             <code>data/word-atlas.json</code> 和 <code>.csv</code> 是完整词库；<code>public/atlas</code> 里是网页用的分块数据、插画和音频。拿去做 Anki 牌组、背词小程序、浏览器插件，或者 AI 应用的评测集，署名即可。
           </p>
-          <a className="link" href={`${REPO_URL}#readme`} target="_blank" rel="noreferrer">
+          <a className="link" href={`${REPO_URL}#readme`} target="_blank" rel="noreferrer noopener">
             阅读文档 <ArrowUpRight size={14} />
           </a>
         </section>
