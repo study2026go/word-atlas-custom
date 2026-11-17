@@ -2691,6 +2691,15 @@ code {
   font-size: 14px;
   color: var(--ink-2);
 }
+
+.feedback-attempt {
+  font-size: 14px;
+  color: var(--terra-ink);
+}
+
+.feedback-attempt b {
+  font-weight: 700;
+}
 .feedback-ex {
   display: none;
   margin-top: 4px;
