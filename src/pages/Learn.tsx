@@ -231,6 +231,18 @@ function Quiz({ step, session }: { step: Step & { kind: QuizKind }; session: Act
       });
   }, [step.kind, entry, atlas, settings.accent, pending]);
 
+  const chosen = pending ? options.find((o) => o.id === pending.value) : undefined;
+  const attempt =
+    pending && !pending.correct
+      ? step.kind === "spell"
+        ? pending.value
+        : chosen
+          ? step.kind === "meaning"
+            ? chosen.zh
+            : chosen.word
+          : undefined
+      : undefined;
+
   const keys: Record<string, () => void> = {};
   if (pending) {
     keys.Enter = next;
@@ -327,7 +339,7 @@ function Quiz({ step, session }: { step: Step & { kind: QuizKind }; session: Act
         </ul>
       )}
 
-      {pending && <Feedback entry={entry} refw={ref} correct={pending.correct} onNext={next} />}
+      {pending && <Feedback entry={entry} refw={ref} correct={pending.correct} attempt={attempt} attemptLabel={step.kind === "spell" ? "你写的是：" : "你选的是："} onNext={next} />}
     </div>
   );
 }
@@ -381,7 +393,7 @@ function SpellInput({ entry, pending, hints, onHint, onSubmit }: { entry: Entry;
           const ok = typed !== undefined && typed.toLowerCase() === ch.toLowerCase();
           return (
             <span key={i} className={`slot ${ch === " " ? "slot-space" : ""} ${typed !== undefined ? (pending ? (ok ? "is-ok" : "is-bad") : "is-filled") : ""} ${!pending && i === shown.length ? "is-caret" : ""}`}>
-              {pending && !pending.correct ? ch : typed ?? ""}
+              {typed ?? ""}
             </span>
           );
         })}
@@ -414,7 +426,7 @@ function SpellInput({ entry, pending, hints, onHint, onSubmit }: { entry: Entry;
   );
 }
 
-function Feedback({ entry, refw, correct, onNext }: { entry: Entry; refw: WordRef; correct: boolean; onNext: () => void }) {
+function Feedback({ entry, refw, correct, attempt, attemptLabel, onNext }: { entry: Entry; refw: WordRef; correct: boolean; attempt?: string; attemptLabel?: string; onNext: () => void }) {
   const atlas = useAtlas();
   const btn = useRef<HTMLButtonElement>(null);
   useEffect(() => btn.current?.focus({ preventScroll: true }), []);
@@ -428,6 +440,12 @@ function Feedback({ entry, refw, correct, onNext }: { entry: Entry; refw: WordRe
             <b lang="en">{entry.w}</b>
             <span className="ipa">{entry.uk || entry.us}</span>
           </p>
+          {!correct && attempt && (
+            <p className="feedback-attempt">
+              {attemptLabel ?? "你写的是："}
+              <b>{attempt}</b>
+            </p>
+          )}
           <p className="feedback-zh">
             {entry.senses
               .slice(0, 2)
